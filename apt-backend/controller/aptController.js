@@ -1,10 +1,9 @@
-// Import necessary modules
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const connection = require('../database/dbConnection');
 const nodemailer = require('nodemailer');
 
-// Nodemailer setup (same as above)
+// Nodemailer 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
   port: process.env.SMTP_PORT,
@@ -14,7 +13,6 @@ const transporter = nodemailer.createTransport({
       pass: process.env.SMTP_PASSWORD
   }
 });
-
 
 const sendConfirmationEmail = (appointment) => {
     const mailOptions = {
@@ -179,7 +177,6 @@ exports.createDefaultAdmin = () => {
       }
   });
 };
-
 
 // Login User
 exports.loginUser = (req, res) => {
