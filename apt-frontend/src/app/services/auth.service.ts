@@ -14,10 +14,23 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/login`, { username, password });
   }
 
-  // Other authentication methods for doctors or additional functionality
   loginDoctor(username: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/login-doctor`, { username, password });
   }
 
-  // You can also add methods for handling tokens, registration, etc.
+  isLoggedIn(): boolean {
+    const token = localStorage.getItem('token');
+    return !!token; // Returns true if token exists, false otherwise
+  }
+
+  getAdminUsername(): string {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decodedToken: any = JSON.parse(atob(token.split('.')[1]));
+      return decodedToken.username;
+    }
+    return '';
+  }
+
+  // remember to add methods for handling tokens, registration, etc.
 }

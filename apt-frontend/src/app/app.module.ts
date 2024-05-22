@@ -10,6 +10,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { DoctorLoginComponent } from './doctor-login/doctor-login.component';
 
 import { AuthService } from './services/auth.service';
+import { AdminDboardComponent } from './admin-dboard/admin-dboard.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AuthService } from './services/auth.service';
     ContactComponent,
     BookAptComponent,
     AdminLoginComponent,
-    DoctorLoginComponent
+    DoctorLoginComponent,
+    AdminDboardComponent
   ],
   imports: [
     BrowserModule,

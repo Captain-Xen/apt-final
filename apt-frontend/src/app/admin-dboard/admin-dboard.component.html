@@ -1,0 +1,10 @@
+<div class="container mt-5">
+    <h2 class="mb-4 text-center text-uppercase fw-bold">Welcome, {{ adminUsername }}</h2>
+    <div class="text-center">
+      <button class="btn btn-primary btn-lg m-2" (click)="navigateTo('patients')">View Patient List</button>
+      <button class="btn btn-primary btn-lg m-2" (click)="navigateTo('doctors')">View Doctor List</button>
+      <button class="btn btn-primary btn-lg m-2" (click)="navigateTo('appointments')">View Booking Appointment List</button>
+      <button class="btn btn-primary btn-lg m-2" (click)="navigateTo('e-prescriptions')">View E-Prescription List</button>
+    </div>
+  </div>
+  
