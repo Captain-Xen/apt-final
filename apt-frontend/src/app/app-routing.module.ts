@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'admin-login', component: AdminLoginComponent, canActivate: [AuthGuard] },
   { path: 'homepage', component: HomepageComponent },
   { path: 'book-apt', component: BookAptComponent },
-  { path: 'contact', component: ContactComponent, canActivate: [AuthGuard] },
+  { path: 'contact', component: ContactComponent },
   { path: 'doctor-login', component: DoctorLoginComponent, canActivate: [AuthGuard] },
   { path: 'admin-dboard', component: AdminDboardComponent, canActivate: [AuthGuard] }
 ];

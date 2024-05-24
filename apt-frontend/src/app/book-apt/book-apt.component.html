@@ -1,1 +1,43 @@
-<p>book-apt works!</p>
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Book an Appointment</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="firstName" class="form-label">First Name</label>
+        <input type="text" id="firstName" [(ngModel)]="appointment.firstName" name="firstName" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input type="text" id="lastName" [(ngModel)]="appointment.lastName" name="lastName" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="phoneNumber" class="form-label">Phone Number</label>
+        <input type="text" id="phoneNumber" [(ngModel)]="appointment.phoneNumber" name="phoneNumber" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" [(ngModel)]="appointment.email" name="email" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="appointmentType" class="form-label">Appointment Type</label>
+        <select id="appointmentType" [(ngModel)]="appointment.appointmentType" name="appointmentType" class="form-control" required>
+          <option *ngFor="let type of appointmentTypes" [value]="type">{{ type }}</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="doctorId" class="form-label">Doctor</label>
+        <select id="doctorId" [(ngModel)]="appointment.doctorId" name="doctorId" class="form-control" required>
+          <option *ngFor="let doctor of doctors" [value]="doctor.id">{{ doctor.name }}</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="appointmentDate" class="form-label">Appointment Date</label>
+        <input type="date" id="appointmentDate" [(ngModel)]="appointment.appointmentDate" name="appointmentDate" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="appointmentTime" class="form-label">Appointment Time</label>
+        <input type="time" id="appointmentTime" [(ngModel)]="appointment.appointmentTime" name="appointmentTime" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Book Appointment</button>
+    </form>
+  </div>
+  

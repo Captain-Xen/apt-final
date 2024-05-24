@@ -8,6 +8,8 @@ import { ContactComponent } from './contact/contact.component';
 import { BookAptComponent } from './book-apt/book-apt.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { DoctorLoginComponent } from './doctor-login/doctor-login.component';
+import { AppointmentService } from './services/appointment.service';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AuthService } from './services/auth.service';
 import { AdminDboardComponent } from './admin-dboard/admin-dboard.component';
@@ -25,9 +27,10 @@ import { AdminDboardComponent } from './admin-dboard/admin-dboard.component';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AppointmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

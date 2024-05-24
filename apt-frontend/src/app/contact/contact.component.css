@@ -1,0 +1,44 @@
+/* Styles for the contact component */
+
+.container {
+    max-width: 900px;
+  }
+  
+  .colored-line {
+    width: 50px;
+    height: 4px;
+    background-color: #007bff;
+    margin: 0 auto;
+  }
+  
+  .map-container {
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio because wide map*/
+  }
+  
+  .map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .lead {
+    font-size: 1.25rem;
+    color: #555;
+  }
+  
+  .text-uppercase {
+    text-transform: uppercase;
+  }
+  
+  .fw-bold {
+    font-weight: bold;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
