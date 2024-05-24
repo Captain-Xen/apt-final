@@ -1,0 +1,33 @@
+<div class="container mt-4">
+    <h2 class="mb-4">Reviews List</h2>
+    <button class="btn btn-primary mb-3" (click)="createReview()">Add Review</button>
+    <div *ngIf="reviews.length > 0">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Customer Name</th>
+            <th>Occupation</th>
+            <th>Review Message</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let review of reviews">
+            <td>{{ review.id }}</td>
+            <td>{{ review.customer_name }}</td>
+            <td>{{ review.occupation }}</td>
+            <td>{{ review.review_message }}</td>
+            <td>
+              <button class="btn btn-info" (click)="editReview(review.id)">Edit</button>
+              <button class="btn btn-danger" (click)="deleteReview(review.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="reviews.length === 0">
+      <p>No reviews available.</p>
+    </div>
+  </div>
+  

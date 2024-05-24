@@ -13,6 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AuthService } from './services/auth.service';
 import { AdminDboardComponent } from './admin-dboard/admin-dboard.component';
+import { ServicesOfferedComponent } from './services-offered/services-offered.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { ReviewsListComponent } from './reviews-list/reviews-list.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { AdminDboardComponent } from './admin-dboard/admin-dboard.component';
     BookAptComponent,
     AdminLoginComponent,
     DoctorLoginComponent,
-    AdminDboardComponent
+    AdminDboardComponent,
+    ServicesOfferedComponent,
+    NotFoundComponent,
+    ReviewsListComponent
   ],
   imports: [
     BrowserModule,
