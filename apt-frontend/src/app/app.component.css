@@ -1,0 +1,94 @@
+/* General styling */
+body {
+    padding-top: 56px; /* Height of the navbar */
+  }
+  
+  /* Footer styling */
+  footer {
+    background-color: #f8f9fa;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+  .header-logo {
+    width: 200px;
+    display: block;
+    margin: auto;
+  }
+
+  .footer-logo {
+    width: 150px;
+    display: block;
+    margin-bottom: 15px;
+  }
+  
+  .social-icon {
+    width: 24px;
+    margin-right: 10px;
+  }
+  
+  .contact-icon {
+    width: 16px;
+    margin-right: 5px;
+  }
+  
+  h5 {
+    font-size: 1.25rem;
+  }
+  
+  ul {
+    padding-left: 0;
+  }
+  
+  ul li {
+    list-style: none;
+  }
+  
+  ul li a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  hr {
+    margin: 5px 0;
+    border: 0;
+    border-top: 1px solid #dee2e6;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .mt-5 {
+    margin-top: 3rem !important;
+  }
+  
+  .pt-5 {
+    padding-top: 3rem !important;
+  }
+  
+  .pb-3 {
+    padding-bottom: 1rem !important;
+  }
+  
+  .mb-3 {
+    margin-bottom: 1rem !important;
+  }
+  
+  .container {
+    max-width: 1140px;
+    margin: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .container-fluid {
+    max-width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  

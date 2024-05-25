@@ -1,0 +1,27 @@
+.discord-img-full-width {
+    width: 100%;
+  }
+  
+  .card {
+    margin-bottom: 20px;
+  }
+  
+  .card-img-top {
+    height: 500px; 
+    object-fit: cover;
+  }
+  
+  body, html {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .gradient-background {
+    background: linear-gradient(to right, #1e9090, #2ab846);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }

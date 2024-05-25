@@ -20,7 +20,7 @@ export class AdminLoginComponent {
         (response: any) => {
           localStorage.setItem('token', response.token);
           Swal.fire('Success', 'Login successful!', 'success');
-          this.router.navigate(['/admin-dashboard']);
+          this.router.navigate(['/admin-dboard']);
         },
         (error) => {
           Swal.fire('Error', 'Login failed. Please try again.', 'error');
