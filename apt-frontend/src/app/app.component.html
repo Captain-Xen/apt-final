@@ -11,22 +11,22 @@
       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
+            <a class="nav-link" routerLink="/" routerLinkActive="active" (click)="scrollToTop()">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/services-offered" routerLinkActive="active">Services</a>
+            <a class="nav-link" routerLink="/services-offered" routerLinkActive="active" (click)="scrollToTop()">Services</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/about" routerLinkActive="active">About Us</a>
+            <a class="nav-link" routerLink="/about" routerLinkActive="active" (click)="scrollToTop()">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact Us</a>
+            <a class="nav-link" routerLink="/contact" routerLinkActive="active" (click)="scrollToTop()">Contact Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/reviews" routerLinkActive="active">Reviews</a>
+            <a class="nav-link" routerLink="/reviews" routerLinkActive="active" (click)="scrollToTop()">Reviews</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/admin-login" routerLinkActive="active">Admin Login</a>
+            <a class="nav-link" routerLink="/admin-login" routerLinkActive="active" (click)="scrollToTop()">Admin Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" style="color: crimson; font-weight: bold; font-size: large;" (click)="logout()">Logout</a>
@@ -46,15 +46,13 @@
   <!-- Footer -->
   <footer class="bg-dark-subtle text-dark mt-5 pt-5 pb-3">
     <div class="container">
-      <!-- Part 1 -->
-      <div class="row center">
-        <div class="col-md-4 mb-3">
-          <img src="assets/hplus.png" alt="Health Plus Associates" class="footer-logo col-md-4 mb-3 center">
-        </div>
-      </div>
       <div class="row">
         <div class="col-md-4 mb-3">
+          <img src="assets/hplus.png" alt="Health Plus Associates" class="footer-logo">
+        </div>
+        <div class="col-md-4 mb-3">
           <h5>Follow Us</h5>
+          <p>Whether you call us on the phone or walk in, the Health Plus Associates team is ready to serve you. Our centre's friendly receptionists will ensure that all is in place before you see your health care provider.</p>
           <p>Save our contact, and connect with us on social media!</p>
           <div>
             <a href="https://www.instagram.com/healthplusassociates/"><img src="assets/instagram.png" alt="Instagram" class="social-icon"></a>
@@ -63,17 +61,12 @@
             <a href="mailto:health_care876@mail.com"><img src="assets/email.png" alt="Email" class="social-icon"></a>
           </div>
         </div>
-        <!-- Part 2 -->
-        <div class="col-md-4 mb-3">
-          <!-- <img src="assets/hplus.png" alt="Health Plus Associates" class="footer-logo"> -->
-          <p>Whether you call us on the phone or walk in, the Health Plus Associates team is ready to serve you. Our centre’s friendly receptionists will ensure that all is in place before you see your health care provider.</p>
-        </div>
         <div class="col-md-4 mb-3">
           <h5>Quicklinks</h5>
           <hr>
           <ul class="list-unstyled">
-            <li><a href="/services-offered">Services</a></li>
-            <li><a href="/about">About Us</a></li>
+            <li><a href="/services-offered" class="footer-link">Services</a></li>
+            <li><a href="/about" class="footer-link">About Us</a></li>
           </ul>
           <h5>Contact Us</h5>
           <hr>
@@ -81,10 +74,11 @@
           <p><img src="assets/phone.png" alt="Phone" class="contact-icon"> +1 876-934-1626</p>
         </div>
       </div>
-      <!-- Part 3 -->
       <div class="text-center mt-3">
         <p>&copy; MMXXIV Health Plus Associates, All Rights Reserved.</p>
       </div>
     </div>
   </footer>
+  
+  
   

@@ -18,4 +18,8 @@ export class AppComponent {
     this.authService.logout();
     this.router.navigate(['/admin-login']); // Redirect to the login page after logout
   }
+
+  scrollToTop() {
+    window.scrollTo(0, 0);
+  }
 }

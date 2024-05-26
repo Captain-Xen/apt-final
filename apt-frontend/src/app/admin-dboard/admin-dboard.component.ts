@@ -14,8 +14,9 @@ export class AdminDboardComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
-    // Fetch and set the admin username here
-    this.adminUsername = this.authService.getAdminUsername();
+    // Fetch and set the admin username here, provide a default if null
+    const username = this.authService.getAdminUsername();
+    this.adminUsername = username ? username : 'Default Admin'; // Provide a default username if null
   }
 
   navigateTo(path: string): void {

@@ -12,23 +12,20 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { AuthGuard } from './auth.guard';
 
-
-
 const routes: Routes = [
-  { path: 'admin-login', component: AdminLoginComponent, canActivate: [AuthGuard] },
+  { path: 'admin-login', component: AdminLoginComponent }, // No AuthGuard here
   { path: '', component: HomepageComponent },
   { path: 'book-apt', component: BookAptComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'about', component: AboutComponent },
   { path: 'reviews', component: ReviewsComponent },
-  { path: 'doctor-login', component: DoctorLoginComponent, canActivate: [AuthGuard] },
+  { path: 'doctor-login', component: DoctorLoginComponent }, // No AuthGuard here
   { path: 'admin-dboard', component: AdminDboardComponent, canActivate: [AuthGuard] },
   { path: 'services-offered', component: ServicesOfferedComponent },
 
   // wild card: for nonexistent routes -> 404 Page. 
   { path: '**', component: NotFoundComponent },
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

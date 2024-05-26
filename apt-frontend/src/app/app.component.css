@@ -17,7 +17,7 @@ body {
   }
 
   .footer-logo {
-    width: 150px;
+    width: 250px;
     display: block;
     margin-bottom: 15px;
   }
@@ -83,6 +83,15 @@ body {
     padding-right: 15px;
   }
   
+  .footer-link {
+    color: #000000; /* Dark green color */
+    text-decoration: none; /* Removes underline */
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+    color: #006400; /* Optional: underline on hover for better user interaction */
+}
 
   /* Import custom font */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');

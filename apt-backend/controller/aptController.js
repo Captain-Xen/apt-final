@@ -67,7 +67,7 @@ const sendConfirmationEmail = (appointment) => {
             </div>
             <div class="content">
                 <p>Dear ${appointment.first_name} ${appointment.last_name},</p>
-                <p>Your appointment for <strong>${appointment.appointment_type}</strong> with Dr. ${appointment.doctor_name} has been confirmed.</p>
+                <p>Your appointment for <strong>${appointment.appointment_type}</strong> with ${appointment.doctor_name} has been confirmed.</p>
                 <p><strong>Appointment Date:</strong> ${appointment.appointment_date}</p>
                 <p><strong>Appointment Time:</strong> ${appointment.appointment_time}</p>
                 <p>Thank you for choosing our service!</p>
