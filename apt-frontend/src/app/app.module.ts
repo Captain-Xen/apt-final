@@ -16,6 +16,7 @@ import { AdminDboardComponent } from './admin-dboard/admin-dboard.component';
 import { ServicesOfferedComponent } from './services-offered/services-offered.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ReviewsListComponent } from './reviews-list/reviews-list.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ReviewsListComponent } from './reviews-list/reviews-list.component';
     AdminDboardComponent,
     ServicesOfferedComponent,
     NotFoundComponent,
-    ReviewsListComponent
+    ReviewsListComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

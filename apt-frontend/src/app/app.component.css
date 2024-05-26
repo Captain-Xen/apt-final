@@ -44,15 +44,6 @@ body {
     list-style: none;
   }
   
-  ul li a {
-    text-decoration: none;
-    color: #007bff;
-  }
-  
-  ul li a:hover {
-    text-decoration: underline;
-  }
-  
   hr {
     margin: 5px 0;
     border: 0;
@@ -64,7 +55,7 @@ body {
   }
   
   .mt-5 {
-    margin-top: 3rem !important;
+    margin-top: 0 !important;
   }
   
   .pt-5 {
@@ -92,3 +83,40 @@ body {
     padding-right: 15px;
   }
   
+
+  /* Import custom font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Custom font for nav links */
+.navbar-nav .nav-link {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+}
+
+/* Active link styling */
+.navbar-nav .nav-link.active {
+  color: blue;
+}
+
+#mainNav {
+  margin-top: 0 !important;
+}
+
+/* Sticky header styles */
+#mainNav.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  animation: slideDown 1.5s ease-in-out;
+}
+
+/* Slide down animation */
+@keyframes slideDown {
+  from {
+    top: -100px;
+  }
+  to {
+    top: 0;
+  }
+}

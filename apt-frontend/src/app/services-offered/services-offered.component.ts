@@ -11,47 +11,47 @@ export class ServicesOfferedComponent implements OnInit {
     {
       title: 'Paediatrician',
       description: 'Comprehensive care for infants, children, and adolescents.',
-      image: 'assets/images/service-paediatrician.jpg'
+      image: 'assets/cross.png'
     },
     {
       title: 'Family Physician',
       description: 'General health care for all family members.',
-      image: 'assets/images/service-family-physician.jpg'
+      image: 'assets/doctor.png'
     },
     {
       title: 'Dermatologist',
       description: 'Expert care for skin conditions and diseases.',
-      image: 'assets/images/service-dermatologist.jpg'
+      image: 'assets/dermatologist.png'
     },
     {
       title: 'Dietitian',
       description: 'Nutritional advice and diet plans for better health.',
-      image: 'assets/images/service-dietitian.jpg'
+      image: 'assets/dietitian.png'
     },
     {
       title: 'Physiotherapist',
       description: 'Rehabilitation services to improve movement and function.',
-      image: 'assets/images/service-physiotherapist.jpg'
+      image: 'assets/physiotherapist.png'
     },
     {
       title: 'Special Consultation',
       description: 'Expert consultations for specialized medical conditions.',
-      image: 'assets/images/service-special-consultation.jpg'
+      image: 'assets/consultation.png'
     },
     {
       title: 'ECG Heart Test',
       description: 'Electrocardiogram tests to monitor heart health.',
-      image: 'assets/images/service-ecg-heart-test.jpg'
+      image: 'assets/ecg.png'
     },
     {
       title: 'Rapid Tests',
       description: 'Quick and accurate diagnostic tests.',
-      image: 'assets/images/service-rapid-tests.jpg'
+      image: 'assets/rapid-test.png'
     },
     {
       title: 'Cardiologist',
       description: 'Specialized care for heart and cardiovascular conditions.',
-      image: 'assets/images/service-cardiologist.jpg'
+      image: 'assets/cardiologist.png'
     }
   ];
 

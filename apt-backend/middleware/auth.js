@@ -1,4 +1,5 @@
 const { verifyToken } = require('../utils/jwt');
+require('dotenv').config();
 
 const authenticateToken = (req, res, next) => {
     const token = req.headers['authorization'];

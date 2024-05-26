@@ -1,27 +1,85 @@
-.discord-img-full-width {
-    width: 100%;
-  }
-  
-  .card {
-    margin-bottom: 20px;
-  }
-  
-  .card-img-top {
-    height: 500px; 
-    object-fit: cover;
-  }
-  
-  body, html {
+/* General body and HTML styling */
+body, html {
     height: 100%;
     margin: 0;
-  }
-  
-  .gradient-background {
-    background: linear-gradient(to right, #1e9090, #2ab846);
+    font-family: 'Arial', sans-serif; /* Consistent font family */
+}
+
+/* Full-width gradient background */
+.gradient-background {
+    background: linear-gradient(to right, #4A90E2, #9013FE); 
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 20px;
-  }
+}
+
+/* Container styling */
+.container {
+    background-color: white; 
+    padding: 20px;
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+    margin-bottom: 20px; 
+}
+
+/* Text and heading styling */
+h2 {
+    color: #333; /* Darker color for better readability */
+    margin-bottom: 10px;
+}
+
+hr.colored-line {
+    border-color: #9013FE; /* Match the gradient end color */
+    margin-bottom: 20px;
+}
+
+p.lead {
+    font-size: 1.1rem; 
+    color: #555; 
+    line-height: 1.6; 
+}
+
+/* Button styling */
+.btn-primary {
+    background-color: #4A90E2; 
+    border: none;
+    padding: 10px 20px;
+}
+
+/* Image styling */
+.img-fluid {
+    border-radius: 8px; 
+}
+
+.card-img-top {
+  height: 500px; 
+  object-fit: cover;
+}
+
+/* Card styling */
+.card {
+    border: none; /* Remove borders */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Consistent with container shadow */
+    margin-bottom: 20px;
+}
+
+.card-body {
+    padding: 15px; /* More padding inside card */
+}
+
+/* Center images specifically */
+.center-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Full-width images in a discord style */
+.discord-img-full-width {
+    width: 100%;
+    border-radius: 8px; /* Rounded corners for images */
+}
+  

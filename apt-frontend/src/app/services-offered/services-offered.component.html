@@ -2,12 +2,12 @@
     <h2 class="mb-4 text-center text-uppercase fw-bold">Our Services</h2>
     <hr class="colored-line mb-4">
     <div class="row">
-        <div class="col-md-4" *ngFor="let service of services">
-            <div class="card mb-4">
-                <img src="{{service.image}}" alt="{{service.title}}" class="card-img-top">
+        <div class="col-md-4" style="margin-bottom: 10px !important;" *ngFor="let service of services">
+            <div class="card mb-4 ">
+                <img src="{{service.image}}" style="height: 200px; width: 200px; padding: 10px;" alt="{{service.title}}" class="card-img-top">
                 <div class="card-body">
-                    <h5 class="card-title">{{service.title}}</h5>
-                    <p class="card-text">{{service.description}}</p>
+                    <h5 class="card-title fw-bold text-center">{{service.title}}</h5>
+                    <p class="card-text text-center">{{service.description}}</p>
                 </div>
             </div>
         </div>

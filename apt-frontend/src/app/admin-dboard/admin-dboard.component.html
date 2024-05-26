@@ -1,5 +1,6 @@
 <div class="container mt-5">
-    <h2 class="mb-4 text-center text-uppercase fw-bold">Welcome, {{ adminUsername }}</h2>
+  <h2>Welcome, Admin</h2>
+  <button class="btn btn-danger" (click)="logout()">Logout</button>
     <div class="text-center">
       <button class="btn btn-primary btn-lg m-2" (click)="navigateTo('patients')">View Patient List</button>
       <button class="btn btn-primary btn-lg m-2" (click)="navigateTo('doctors')">View Doctor List</button>

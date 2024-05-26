@@ -10,21 +10,30 @@ import Swal from 'sweetalert2';
 })
 export class BookAptComponent {
   appointment = {
-    firstName: '',
-    lastName: '',
-    phoneNumber: '',
+    first_name: '',
+    last_name: '',
+    phone_number: '',
     email: '',
-    appointmentType: '',
-    doctorId: '',
-    appointmentDate: '',
-    appointmentTime: ''
+    appointment_type: '',
+    doctor_id: '',
+    appointment_date: '',
+    appointment_time: ''
   };
 
-  doctors = [
+  originalDoctors = [
     { id: 1, name: 'Dr. Llorenia Muir-Green', type: 'Dermatologist' },
     { id: 2, name: 'Dr. Tasque Brown-McCalla', type: 'Family Physician' },
-    // Add more doctors here as per your database
+    { id: 3, name: 'Dr. Edmond Miller', type: 'Family Physician' },
+    { id: 4, name: 'Dr. Orville Nembhard', type: 'Family Physician' },
+    { id: 5, name: 'Ms. Maya Tyson-Young', type: 'Physiotherapist' },
+    { id: 6, name: 'Ms. Beverley Anthony', type: 'Dietitian' },
+    { id: 7, name: 'Dr. Camille Christian', type: 'Cardiologist' },
+    { id: 8, name: 'Dr. Phillip Brown', type: 'ECG Heart Test' }, 
+    { id: 9, name: 'Dr. Debbie Thompson', type: 'Dermatologist' },
+    { id: 10, name: 'Dr. Patricia Lynn', type: 'Paediatrician' }
   ];
+
+  doctors = [...this.originalDoctors]; // Copy of original doctors list
 
   appointmentTypes = [
     'Paediatrician',
@@ -41,30 +50,35 @@ export class BookAptComponent {
   constructor(private appointmentService: AppointmentService, private router: Router) {}
 
   onSubmit(): void {
-    this.appointmentService.bookAppointment(this.appointment).subscribe(
-      (response: any) => {
-        // Display success alert
+    this.appointmentService.bookAppointment(this.appointment, { responseType: 'text' }).subscribe(
+      response => {
+        console.log('Response:', response);
         Swal.fire({
           icon: 'success',
           title: 'Appointment Booked',
-          text: 'Your appointment has been successfully booked!',
+          text: 'Your appointment has been successfully booked.',
           showConfirmButton: false,
-          timer: 1500
+          timer: 2500
         });
-
-        // Redirect to the homepage or another page after a short delay
         setTimeout(() => {
           this.router.navigate(['/']);
         }, 1500);
       },
-      (error: any) => {
-        // Display error alert
+      error => {
+        console.error('Error:', error);
         Swal.fire({
           icon: 'error',
           title: 'Booking Failed',
-          text: error.error.message || 'Unable to book the appointment. Please try again.'
+          text: 'Unable to book the appointment. Please try again.'
         });
       }
+    );
+  }
+  
+
+  filterDoctors(): void {
+    this.doctors = this.originalDoctors.filter(
+      doctor => doctor.type === this.appointment.appointment_type
     );
   }
 }

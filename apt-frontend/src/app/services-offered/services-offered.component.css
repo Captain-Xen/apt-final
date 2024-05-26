@@ -1,10 +1,20 @@
 .card {
-    margin-bottom: 20px;
+    height: 100%; /* Ensures all cards in the container have the same height */
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: column;
   }
   
   .card-img-top {
-    height: 200px;
-    object-fit: cover;
+    width: 100%; /* Makes the image responsive and covers the width */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 auto; /* Center the image horizontally */
+  }
+  
+  .card-text {
+    flex-grow: 1; /* Allows the text section to expand and push the footer down */
   }
   
   .colored-line {

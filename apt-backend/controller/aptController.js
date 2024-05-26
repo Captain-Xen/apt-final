@@ -15,18 +15,76 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendConfirmationEmail = (appointment) => {
+    const htmlContent = `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Appointment Confirmation</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                color: #333;
+                padding: 20px;
+            }
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            .header {
+                text-align: center;
+                background-color: #f4f4f4;
+                padding: 10px 0;
+                border-bottom: 1px solid #ccc;
+            }
+            .header h2 {
+                margin: 0;
+                color: #007bff;
+            }
+            .content {
+                margin: 20px 0;
+            }
+            .footer {
+                text-align: center;
+                margin-top: 20px;
+                padding-top: 10px;
+                border-top: 1px solid #ccc;
+                font-size: 0.9em;
+                color: #777;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h2>Appointment Confirmation</h2>
+            </div>
+            <div class="content">
+                <p>Dear ${appointment.first_name} ${appointment.last_name},</p>
+                <p>Your appointment for <strong>${appointment.appointment_type}</strong> with Dr. ${appointment.doctor_name} has been confirmed.</p>
+                <p><strong>Appointment Date:</strong> ${appointment.appointment_date}</p>
+                <p><strong>Appointment Time:</strong> ${appointment.appointment_time}</p>
+                <p>Thank you for choosing our service!</p>
+            </div>
+            <div class="footer">
+                <p>&copy; ${new Date().getFullYear()} Health Plus Associates. All rights reserved.</p>
+            </div>
+        </div>
+    </body>
+    </html>
+    `;
+
     const mailOptions = {
         from: process.env.SMTP_USER,
         to: appointment.email,
         subject: 'Appointment Confirmation',
-        text: `Dear ${appointment.first_name} ${appointment.last_name},
-        
-        Your appointment for ${appointment.appointment_type} with Dr. ${appointment.doctor_name} has been confirmed.
-        Appointment Date: ${appointment.appointment_date}
-        Appointment Time: ${appointment.appointment_time}
-
-        Thank you for choosing our service!
-        `
+        html: htmlContent
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
@@ -34,9 +92,13 @@ const sendConfirmationEmail = (appointment) => {
             console.error('Error sending email:', error);
         } else {
             console.log('Email sent:', info.response);
+
+            // Send the success message back to the client
+            res.status(201).json({ message: 'Appointment booked and email sent successfully' });
         }
     });
 };
+
 
 // Register User
 exports.registerUser = (req, res) => {
@@ -205,17 +267,20 @@ exports.loginUser = (req, res) => {
 
 // Book Appointment
 exports.bookAppointment = (req, res) => {
-    const { id, first_name, last_name, phone_number, email, appointment_type, doctor_id, appointment_time, appointment_date } = req.body;
+    const { first_name, last_name, phone_number, email, appointment_type, doctor_id, appointment_time, appointment_date } = req.body;
+    console.log('Request Body:', req.body);  // Log the incoming request
 
-    connection.query('INSERT INTO appointments (id, first_name, last_name, phone_number, email, appointment_type, doctor_id, appointment_time, appointment_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', 
-    [id, first_name, last_name, phone_number, email, appointment_type, doctor_id, appointment_time, appointment_date], (error, results) => {
+    connection.query('INSERT INTO appointments (first_name, last_name, phone_number, email, appointment_type, doctor_id, appointment_time, appointment_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', 
+    [first_name, last_name, phone_number, email, appointment_type, doctor_id, appointment_time, appointment_date], (error, results) => {
         if (error) {
+            console.error('Error inserting appointment:', error);  // Log the error
             return res.status(500).send('Error booking appointment');
         }
 
         // Get doctor name to send in the email
         connection.query('SELECT full_name FROM doctors WHERE id = ?', [doctor_id], (err, docResults) => {
             if (err) {
+                console.error('Error retrieving doctor info:', err);  // Log the error
                 return res.status(500).send('Error retrieving doctor info');
             }
             const doctor_name = docResults[0].full_name;
@@ -224,6 +289,7 @@ exports.bookAppointment = (req, res) => {
         });
     });
 };
+
 
 // Get All Appointments
 exports.getAllAppointments = (req, res) => {

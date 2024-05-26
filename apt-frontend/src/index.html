@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>AptFrontend</title>
+  <title>Health Care Project</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -11,3 +11,13 @@
   <app-root></app-root>
 </body>
 </html>
+<script>
+  window.addEventListener('scroll', function() {
+    const header = document.getElementById('mainNav');
+    if (window.scrollY > 100) {
+      header.classList.add('sticky');
+    } else {
+      header.classList.remove('sticky');
+    }
+  });
+</script>

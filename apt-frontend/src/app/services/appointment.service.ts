@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,8 +10,8 @@ export class AppointmentService {
 
   constructor(private http: HttpClient) {}
 
-  bookAppointment(appointment: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/book`, appointment);
+  bookAppointment(appointmentData: any, options?: any): Observable<any> {
+   return this.http.post(this.apiUrl, appointmentData, options);
   }
 
   // Add other appointment-related methods as needed

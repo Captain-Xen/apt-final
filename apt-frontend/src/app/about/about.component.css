@@ -1,0 +1,28 @@
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.header {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 30px;
+}
+
+.text {
+    font-size: 1.25rem;
+    color: #333;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #007bff;
+}
