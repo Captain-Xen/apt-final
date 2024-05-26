@@ -9,6 +9,7 @@ import { AdminDboardComponent } from './admin-dboard/admin-dboard.component';
 import { ServicesOfferedComponent } from './services-offered/services-offered.component';
 import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ReviewsComponent } from './reviews/reviews.component';
 import { AuthGuard } from './auth.guard';
 
 
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'book-apt', component: BookAptComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'reviews', component: ReviewsComponent },
   { path: 'doctor-login', component: DoctorLoginComponent, canActivate: [AuthGuard] },
   { path: 'admin-dboard', component: AdminDboardComponent, canActivate: [AuthGuard] },
   { path: 'services-offered', component: ServicesOfferedComponent },

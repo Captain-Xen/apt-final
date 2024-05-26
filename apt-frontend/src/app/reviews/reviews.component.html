@@ -1,0 +1,26 @@
+<div class="container mt-5">
+    <h2 class="mb-4 text-center text-uppercase fw-bold">Leave a Review</h2>
+    <hr class="colored-line mb-4">
+  
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" [(ngModel)]="review.name" name="name" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="rating" class="form-label">Rating</label>
+        <select class="form-control" id="rating" [(ngModel)]="review.rating" name="rating" required>
+          <option *ngFor="let rating of ratings" [value]="rating">{{rating}}</option>
+        </select>
+      </div>
+  
+      <div class="mb-3">
+        <label for="comment" class="form-label">Comment</label>
+        <textarea class="form-control" id="comment" [(ngModel)]="review.comment" name="comment" rows="3" required></textarea>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Submit Review</button>
+    </form>
+  </div>
+  

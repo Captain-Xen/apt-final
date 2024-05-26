@@ -17,6 +17,7 @@ import { ServicesOfferedComponent } from './services-offered/services-offered.co
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ReviewsListComponent } from './reviews-list/reviews-list.component';
 import { AboutComponent } from './about/about.component';
+import { ReviewsComponent } from './reviews/reviews.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AboutComponent } from './about/about.component';
     ServicesOfferedComponent,
     NotFoundComponent,
     ReviewsListComponent,
-    AboutComponent
+    AboutComponent,
+    ReviewsComponent
   ],
   imports: [
     BrowserModule,
