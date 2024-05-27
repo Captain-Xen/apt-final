@@ -99,7 +99,6 @@ const sendConfirmationEmail = (appointment) => {
     });
 };
 
-
 // Register User
 exports.registerUser = (req, res) => {
     const { username, password, email } = req.body;

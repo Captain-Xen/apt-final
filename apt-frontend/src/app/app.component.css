@@ -129,3 +129,8 @@ body {
     top: 0;
   }
 }
+
+.colored-line {
+  width: 50%;
+  border: 1px solid #00438b;
+}
