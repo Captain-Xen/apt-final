@@ -1,21 +1,52 @@
 .container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  h2 {
-    margin-bottom: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .btn-block {
-    width: 100%;
-  }
-  
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 10px;
+  background: #f8f9fa;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: 700;
+}
+
+.login-form {
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+#input.form-group{
+  border: 2px solid #333;
+}
+
+.form-control {
+  border-radius: 30px;
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+}
+
+.form-control:focus {
+  border-color: #80bdff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.btn-block {
+  width: 100%;
+  border-radius: 30px;
+  padding: 10px;
+  font-size: 16px;
+  background: #007bff;
+  border: none;
+  transition: background 0.3s ease;
+}
+
+.btn-block:hover {
+  background: #0056b3;
+}

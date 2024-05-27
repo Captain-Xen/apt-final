@@ -13,7 +13,7 @@ import { ReviewsComponent } from './reviews/reviews.component';
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  { path: 'admin-login', component: AdminLoginComponent }, // No AuthGuard here
+  { path: 'admin-login', component: AdminLoginComponent }, 
   { path: '', component: HomepageComponent },
   { path: 'book-apt', component: BookAptComponent },
   { path: 'contact', component: ContactComponent },
