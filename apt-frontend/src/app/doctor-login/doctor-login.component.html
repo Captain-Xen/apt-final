@@ -1,15 +1,28 @@
-<div class="container mt-5">
-    <h2 class="mb-4 text-center">Doctor Login</h2>
-    <form (ngSubmit)="onSubmit()">
-      <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" id="username" [(ngModel)]="username" name="username" class="form-control" required>
-      </div>
-      <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" id="password" [(ngModel)]="password" name="password" class="form-control" required>
-      </div>
-      <button type="submit" class="btn btn-primary">Login</button>
-    </form>
+<div class="container my-5">
+  <h2 class="text-center">Doctor Login</h2>
+  <h5 style="text-align: center;">You're logging on as: </h5>
+
+  <div class="d-flex justify-content-center mb-4">
+  <div class="btn-group mb-4" role="group">
+    <button type="button" class="btn btn-outline-primary m-2" [class.active]="isAdminLogin" (click)="selectLogin('admin')">
+      Admin
+      <span *ngIf="isAdminLogin" class="dot"></span>
+    </button>
+    <button type="button" class="btn btn-outline-primary m-2" [class.active]="!isAdminLogin" (click)="selectLogin('doctor')">
+      Doctor
+      <span *ngIf="!isAdminLogin" class="dot"></span>
+    </button>
   </div>
-  
+</div>
+  <form (ngSubmit)="onSubmit()" class="login-form">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" id="username" class="form-control" [(ngModel)]="username" name="username" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" class="form-control" [(ngModel)]="password" name="password" required>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Login</button>
+  </form>
+</div>

@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 export class DoctorLoginComponent {
   username: string = '';
   password: string = '';
+  isAdminLogin: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -31,7 +32,7 @@ export class DoctorLoginComponent {
 
         // Redirect to the doctor's dashboard w/ delay of 1.5s
         setTimeout(() => {
-          this.router.navigate(['/doctor-dashboard']);
+          this.router.navigate(['/doctor-dboard']);
         }, 1500);
       },
       (error: any) => {
@@ -43,5 +44,11 @@ export class DoctorLoginComponent {
         });
       }
     );
+  }
+
+  selectLogin(type: string): void {
+    if (type === 'admin') {
+      this.router.navigate(['/login/superuser']);
+    }
   }
 }

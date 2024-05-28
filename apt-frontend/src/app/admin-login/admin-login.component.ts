@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 export class AdminLoginComponent {
   username: string = '';
   password: string = '';
+  isAdminLogin: boolean = true;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -28,6 +29,15 @@ export class AdminLoginComponent {
       );
     } else {
       Swal.fire('Error', 'Please enter username and password.', 'error');
+    }
+  }
+
+  selectLogin(type: string): void {
+    if (type === 'doctor') {
+      this.isAdminLogin = false;
+      this.router.navigate(['/doctor-login']);
+    } else {
+      this.isAdminLogin = true;
     }
   }
 }

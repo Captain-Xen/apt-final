@@ -18,6 +18,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ReviewsListComponent } from './reviews-list/reviews-list.component';
 import { AboutComponent } from './about/about.component';
 import { ReviewsComponent } from './reviews/reviews.component';
+import { AdminRegisterDoctorComponent } from './admin-register-doctor/admin-register-doctor.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ReviewsComponent } from './reviews/reviews.component';
     NotFoundComponent,
     ReviewsListComponent,
     AboutComponent,
-    ReviewsComponent
+    ReviewsComponent,
+    AdminRegisterDoctorComponent
   ],
   imports: [
     BrowserModule,

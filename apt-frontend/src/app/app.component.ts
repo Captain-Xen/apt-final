@@ -7,16 +7,14 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-// export class AppComponent {
-//   title = 'apt-frontend';
-// }
+
 export class AppComponent {
   title = 'Health Care';
   constructor(private authService: AuthService, private router: Router) {}
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['/admin-login']); // Redirect to the login page after logout
+    this.router.navigate(['/login/superuser']); // Redirect to the login page after logout
   }
 
   scrollToTop() {

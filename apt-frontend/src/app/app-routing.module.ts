@@ -10,10 +10,13 @@ import { ServicesOfferedComponent } from './services-offered/services-offered.co
 import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ReviewsComponent } from './reviews/reviews.component';
+import { AdminRegisterDoctorComponent } from './admin-register-doctor/admin-register-doctor.component';
 import { AuthGuard } from './auth.guard';
+import { AuthService } from './services/auth.service';
 
 const routes: Routes = [
-  { path: 'admin-login', component: AdminLoginComponent }, 
+  { path: 'admin/register-doctor', component: AdminRegisterDoctorComponent, canActivate: [AuthGuard] },
+  { path: 'login/superuser', component: AdminLoginComponent }, 
   { path: '', component: HomepageComponent },
   { path: 'book-apt', component: BookAptComponent },
   { path: 'contact', component: ContactComponent },
