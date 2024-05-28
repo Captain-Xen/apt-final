@@ -8,7 +8,7 @@
       Admin
       <span *ngIf="isAdminLogin" class="dot"></span>
     </button>
-    <button type="button" class="btn btn-outline-primary m-2" [class.active]="!isAdminLogin" (click)="selectLogin('doctor')">
+    <button type="button" class="btn btn-outline-success m-2" [class.active]="!isAdminLogin" (click)="selectLogin('doctor')">
       Doctor
       <span *ngIf="!isAdminLogin" class="dot"></span>
     </button>

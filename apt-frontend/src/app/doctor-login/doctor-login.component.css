@@ -4,7 +4,7 @@
     padding: 30px;
     border-radius: 10px;
     background: #f8f9fa;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(24, 116, 255, 0.464);
     border: none;
   }
   
@@ -39,13 +39,13 @@
     border-radius: 30px;
     padding: 10px;
     font-size: 16px;
-    background: #007bff;
+    background: #9000ff;
     border: none;
     transition: background 0.3s ease;
   }
   
   .btn-block:hover {
-    background: #0056b3;
+    background: #6e00b3;
   }
   
   .btn-group .btn {

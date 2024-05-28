@@ -8,7 +8,7 @@ router.post('/register', authenticateToken, aptController.registerUser);
 router.post('/login', aptController.loginUser);
 
 // Doctor routes
-router.post('/register-doctor', authenticateToken, aptController.registerDoctorUser);
+router.post('/register-doctor', aptController.registerDoctorUser);
 router.post('/login-doctor', aptController.loginDoctorUser);
 
 // Appointment routes

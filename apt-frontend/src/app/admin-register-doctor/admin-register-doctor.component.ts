@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
   templateUrl: './admin-register-doctor.component.html',
   styleUrls: ['./admin-register-doctor.component.css']
 })
-export class AdminRegisterDoctorComponent implements OnInit {
+export class AdminRegisterDoctorComponent {
   doctor = {
     username: '',
     password: '',
@@ -26,14 +26,14 @@ export class AdminRegisterDoctorComponent implements OnInit {
     { id: 7, name: 'Dr. Camille Christian', appointment_type: 'Cardiologist' },
     { id: 8, name: 'Dr. Phillip Brown', appointment_type: 'ECG Heart Test' },
     { id: 9, name: 'Dr. Debbie Thompson', appointment_type: 'Dermatologist' },
-    { id: 10, name: 'Dr. Patricia Lynn', appointment_type: 'Paediatrician' }
+    { id: 10, name: 'Dr. Patricia Lynn', appointment_type: 'Paediatrician' },
+    { id: 11, name: 'Dr. Annetta Wishart', appointment_type: 'Family Physician' }
   ];
 
   constructor(private adminService: AdminService, private router: Router) {}
 
-  ngOnInit(): void {}
-
   registerDoctor(): void {
+    console.log('Registering doctor with data:', this.doctor); // Log the payload data
     this.adminService.registerDoctor(this.doctor).subscribe(
       response => {
         Swal.fire({
@@ -43,9 +43,10 @@ export class AdminRegisterDoctorComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         });
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/admin-dboard']);
       },
       error => {
+        console.error('Error registering doctor:', error);
         Swal.fire({
           icon: 'error',
           title: 'Registration Failed',
@@ -54,4 +55,5 @@ export class AdminRegisterDoctorComponent implements OnInit {
       }
     );
   }
+  
 }

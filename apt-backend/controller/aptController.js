@@ -121,9 +121,10 @@ exports.registerDoctorUser = (req, res) => {
   connection.query('INSERT INTO doctors_users (username, password, email, doctor_id) VALUES (?, ?, ?, ?)', 
   [username, hashedPassword, email, doctor_id], (error, results) => {
       if (error) {
-          return res.status(500).send('Error registering doctor user');
+          console.error('Database Error:', error); // Log the actual error
+          return res.status(500).send({ message: 'Error registering doctor user', error: error.message });
       }
-      res.status(201).send('Doctor user registered successfully');
+      res.status(201).send({ message: 'Doctor user registered successfully' }); // Send a JSON response
   });
 };
 
