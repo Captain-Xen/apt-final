@@ -26,7 +26,7 @@ export class AdminDboardComponent implements OnInit {
   logout(): void {
     this.authService.logout();
     Swal.fire('Logged out', 'You have been logged out successfully', 'success').then(() => {
-      this.router.navigate(['/admin-login']); 
+      this.router.navigate(['/login/superuser']); 
     });
   }
 }

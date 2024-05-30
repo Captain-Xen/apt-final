@@ -19,6 +19,7 @@ import { ReviewsListComponent } from './reviews-list/reviews-list.component';
 import { AboutComponent } from './about/about.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { AdminRegisterDoctorComponent } from './admin-register-doctor/admin-register-doctor.component';
+import { DoctorDashboardComponent } from './doctor-dboard/doctor-dboard.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AdminRegisterDoctorComponent } from './admin-register-doctor/admin-regi
     ReviewsListComponent,
     AboutComponent,
     ReviewsComponent,
-    AdminRegisterDoctorComponent
+    AdminRegisterDoctorComponent,
+    DoctorDashboardComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,21 @@
+<div>
+    <h1>Doctor Dashboard</h1>
+    
+    <div *ngFor="let doctorId of doctorId">
+      <h2>Doctor {{ doctorId }}</h2>
+      
+      <h3>Patients:</h3>
+      <ul>
+        <li *ngFor="let patient of patients">
+          {{ patient.doctorId }} - {{ patient.data.patientName }}
+        </li>
+      </ul>
+    </div>
+  
+    <h3>Appointments:</h3>
+    <ul>
+      <li *ngFor="let appointment of appointments">
+        {{ appointment.appointmentDate }} - {{ appointment.appointmentType }}
+      </li>
+    </ul>
+  </div>

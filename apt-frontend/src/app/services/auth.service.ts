@@ -39,8 +39,8 @@ export class AuthService {
     );
   }
 
-  loginDoctor(username: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/doctor-login`, { username, password }).pipe(
+  loginDoctorUser(username: string, password: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/login-doctor`, { username, password }).pipe(
       map((response: any) => {
         if (response && response.token) {
           this.saveToken(response.token);

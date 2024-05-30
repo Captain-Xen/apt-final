@@ -16,7 +16,7 @@ export class DoctorLoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit(): void {
-    this.authService.loginDoctor(this.username, this.password).subscribe(
+    this.authService.loginDoctorUser(this.username, this.password).subscribe(
       (response: any) => {
         // Save the token in localStorage
         localStorage.setItem('token', response.token);

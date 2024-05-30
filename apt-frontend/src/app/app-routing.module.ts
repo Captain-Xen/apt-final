@@ -11,6 +11,7 @@ import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { AdminRegisterDoctorComponent } from './admin-register-doctor/admin-register-doctor.component';
+import { DoctorDashboardComponent } from './doctor-dboard/doctor-dboard.component';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './services/auth.service';
 
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'reviews', component: ReviewsComponent },
   { path: 'doctor-login', component: DoctorLoginComponent }, // No AuthGuard here
   { path: 'admin-dboard', component: AdminDboardComponent, canActivate: [AuthGuard] },
+  { path: 'doctor-dboard', component: DoctorDashboardComponent, canActivate: [AuthGuard] },
   { path: 'services-offered', component: ServicesOfferedComponent },
 
   // wild card: for nonexistent routes -> 404 Page. 
