@@ -1,15 +1,24 @@
 <div class="container mt-5">
-    <h2 class="mb-4 text-center text-uppercase fw-bold">Our Services</h2>
-    <hr class="colored-line mb-4">
-    <div class="row">
-        <div class="col-md-4" style="margin-bottom: 10px !important;" *ngFor="let service of services">
-            <div class="card mb-4 ">
-                <img src="{{service.image}}" style="height: 200px; width: 200px; padding: 10px;" alt="{{service.title}}" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title fw-bold text-center">{{service.title}}</h5>
-                    <p class="card-text text-center">{{service.description}}</p>
-                </div>
-            </div>
+  <h2 class="mb-4 text-center text-uppercase fw-bold">Our Services</h2>
+  <hr class="colored-line mb-4">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let service of paginatedServices">
+      <div class="card mb-4">
+        <img src="{{service.image}}" style="height: 200px; width: 200px; padding: 10px;" alt="{{service.title}}" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title fw-bold text-center">{{service.title}}</h5>
+          <p class="card-text text-center">{{service.description}}</p>
         </div>
+      </div>
     </div>
+  </div>
+  <div class="pagination justify-content-center m-4">
+    <button class="btn btn-primary mx-1" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+    <ng-container *ngFor="let page of [].constructor(totalPages); let i = index">
+      <button class="btn btn-secondary mx-1" (click)="changePage(i + 1)" [ngClass]="{'btn-primary': currentPage === i + 1, 'btn-secondary': currentPage !== i + 1}">
+        {{i + 1}}
+      </button>
+    </ng-container>
+    <button class="btn btn-success mx-1" (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+  </div>
 </div>

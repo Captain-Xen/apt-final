@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./services-offered.component.css']
 })
 export class ServicesOfferedComponent implements OnInit {
-
   services = [
     {
       title: 'Paediatrician',
@@ -55,9 +54,22 @@ export class ServicesOfferedComponent implements OnInit {
     }
   ];
 
+  currentPage = 1;
+  itemsPerPage = 3;
+  totalPages = Math.ceil(this.services.length / this.itemsPerPage);
+
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  get paginatedServices() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    return this.services.slice(startIndex, startIndex + this.itemsPerPage);
   }
 
+  changePage(page: number): void {
+    if (page > 0 && page <= this.totalPages) {
+      this.currentPage = page;
+    }
+  }
 }

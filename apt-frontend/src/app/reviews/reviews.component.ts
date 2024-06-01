@@ -1,5 +1,5 @@
+// reviews.component.ts
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { ReviewService } from '../services/review.service';
 import Swal from 'sweetalert2';
 
@@ -10,14 +10,12 @@ import Swal from 'sweetalert2';
 })
 export class ReviewsComponent {
   review = {
-    name: '',
-    rating: null,
-    comment: ''
+    customer_name: '',
+    occupation: '',
+    review_message: ''
   };
 
-  ratings = [1, 2, 3, 4, 5];
-
-  constructor(private reviewService: ReviewService, private router: Router) {}
+  constructor(private reviewService: ReviewService) {}
 
   onSubmit(): void {
     this.reviewService.createReview(this.review).subscribe(
@@ -31,9 +29,9 @@ export class ReviewsComponent {
         });
 
         this.review = {
-          name: '',
-          rating: null,
-          comment: ''
+          customer_name: '',
+          occupation: '',
+          review_message: ''
         };
       },
       (error: any) => {
@@ -46,3 +44,4 @@ export class ReviewsComponent {
     );
   }
 }
+
