@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./doctor-dboard.component.css']
 })
 export class DoctorDashboardComponent implements OnInit {
-  doctorId: number | null = null; // Assuming doctor ID will be set from login/auth
+  doctorId: number | null = null;
   patients: any[] = [];
   appointments: any[] = [];
   selectedAppointment: any = null;
@@ -17,7 +17,8 @@ export class DoctorDashboardComponent implements OnInit {
   constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
-    this.doctorId = this.getLoggedInDoctorId(); // Get logged-in doctor's ID
+    this.doctorId = this.getLoggedInDoctorId();
+    console.log('Doctor ID:', this.doctorId);
     if (this.doctorId) {
       this.getPatientsByDoctor(this.doctorId);
       this.getAppointments();
@@ -27,13 +28,13 @@ export class DoctorDashboardComponent implements OnInit {
         title: 'Oops...',
         text: 'Failed to get doctor ID. Please log in again.'
       });
-      this.router.navigate(['/login']); // Navigate to login if doctor ID is not found
+      this.router.navigate(['/doctor-login']);
     }
   }
 
   getLoggedInDoctorId(): number | null {
-    // Replace this with actual logic to get the logged-in doctor's ID
-    return parseInt(localStorage.getItem('doctorId') || '0', 10);
+    const doctorId = localStorage.getItem('doctorId');
+    return doctorId ? parseInt(doctorId, 10) : null;
   }
 
   getPatientsByDoctor(doctorId: number): void {
@@ -84,7 +85,7 @@ export class DoctorDashboardComponent implements OnInit {
   createEPrescription(): void {
     const prescriptionData = {
       patient_id: 'patientId',
-      doctor_id: this.doctorId, // Use the logged-in doctor's ID
+      doctor_id: this.doctorId,
       prescription: 'Prescription details'
     };
 

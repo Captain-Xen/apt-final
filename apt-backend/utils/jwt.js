@@ -4,7 +4,10 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const generateToken = (user) => {
-    return jwt.sign({ id: user.id, username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ id: user.id, username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    // token keeps generating equal signs and dashes for some reason, find work around to remove it
+    const base64UrlToken = token.replace(/=+$/, '');
+    return base64UrlToken;
 };
 
 const verifyToken = (token) => {

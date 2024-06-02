@@ -18,9 +18,10 @@ export class DoctorLoginComponent {
   onSubmit(): void {
     this.authService.loginDoctorUser(this.username, this.password).subscribe(
       (response: any) => {
-        // Save the token in localStorage
+        // Save the token and doctor ID in localStorage
         localStorage.setItem('token', response.token);
-
+        localStorage.setItem('doctorId', response.doctorId); // Assuming the response contains doctorId
+  
         // Display success alert
         Swal.fire({
           icon: 'success',
@@ -29,7 +30,7 @@ export class DoctorLoginComponent {
           showConfirmButton: false,
           timer: 1500
         });
-
+  
         // Redirect to the doctor's dashboard w/ delay of 1.5s
         setTimeout(() => {
           this.router.navigate(['/doctor-dboard']);

@@ -42,11 +42,14 @@ export class AuthService {
   loginDoctorUser(username: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/login-doctor`, { username, password }).pipe(
       map((response: any) => {
-        if (response && response.token) {
+        if (response && response.token && response.doctorId) {
+          console.log('Token:', response.token); // Log the token
+          console.log('Doctor ID:', response.doctorId); // Log the doctor ID
+
           this.saveToken(response.token);
+          localStorage.setItem('doctorId', response.doctorId); // Store the doctor ID
           this.authStatus.next(true);
-          // Assuming doctors do not have admin privileges
-          this.adminStatus.next(false);
+          this.adminStatus.next(false); // Assuming doctors do not have admin privileges
           return true;
         }
         return false;
@@ -73,6 +76,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('jwtToken');
+    localStorage.removeItem('doctorId'); // Remove the doctor ID on logout
     this.authStatus.next(false);
     this.adminStatus.next(false);
   }
@@ -89,4 +93,3 @@ export class AuthService {
     return JSON.parse(atob(token.split('.')[1]));
   }
 }
-
