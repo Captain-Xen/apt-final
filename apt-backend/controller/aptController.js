@@ -341,3 +341,27 @@ exports.deleteAppointment = (req, res) => {
         res.status(200).send('Appointment deleted successfully');
     });
 };
+
+// Get all reviews
+exports.getAllReviews = (req, res) => {
+    connection.query('SELECT * FROM reviews', (err, results) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Error retrieving reviews');
+        }
+        res.status(200).json(results);
+    });
+};
+
+// Create a new review
+exports.createReview = (req, res) => {
+    const { customer_name, occupation, review_message } = req.body;
+    const sql = 'INSERT INTO reviews (customer_name, occupation, review_message) VALUES (?, ?, ?)';
+    connection.query(sql, [customer_name, occupation, review_message], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Error creating review');
+        }
+        res.status(201).json({ id: result.insertId, customer_name, occupation, review_message });
+    });
+};

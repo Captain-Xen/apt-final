@@ -1,6 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-doctor-dboard',
@@ -8,27 +9,44 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./doctor-dboard.component.css']
 })
 export class DoctorDashboardComponent implements OnInit {
-  doctorId: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+  doctorId: number | null = null; // Assuming doctor ID will be set from login/auth
   patients: any[] = [];
   appointments: any[] = [];
   selectedAppointment: any = null;
 
-  constructor(@Inject(DataService) private dataService: DataService, private router: Router) {}
+  constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
-    this.doctorId.forEach((doctorId) => {
-      this.getPatientsByDoctor(doctorId);
-    });
-    this.getAppointments();
+    this.doctorId = this.getLoggedInDoctorId(); // Get logged-in doctor's ID
+    if (this.doctorId) {
+      this.getPatientsByDoctor(this.doctorId);
+      this.getAppointments();
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Failed to get doctor ID. Please log in again.'
+      });
+      this.router.navigate(['/login']); // Navigate to login if doctor ID is not found
+    }
+  }
+
+  getLoggedInDoctorId(): number | null {
+    // Replace this with actual logic to get the logged-in doctor's ID
+    return parseInt(localStorage.getItem('doctorId') || '0', 10);
   }
 
   getPatientsByDoctor(doctorId: number): void {
     this.dataService.getPatientsByDoctor(doctorId.toString()).subscribe(
       (data: any) => {
-        this.patients.push({ doctorId, data });
+        this.patients = data;
       },
       (error) => {
-        console.error(`Error fetching patients for doctor ${doctorId}:`, error);
+        Swal.fire({
+          icon: 'error',
+          title: `Error fetching patients for doctor ${doctorId}`,
+          text: error.message
+        });
       }
     );
   }
@@ -39,7 +57,11 @@ export class DoctorDashboardComponent implements OnInit {
         this.appointments = data;
       },
       (error) => {
-        console.error('Error fetching appointments:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error fetching appointments',
+          text: error.message
+        });
       }
     );
   }
@@ -50,7 +72,11 @@ export class DoctorDashboardComponent implements OnInit {
         this.selectedAppointment = data;
       },
       (error) => {
-        console.error('Error fetching appointment:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error fetching appointment',
+          text: error.message
+        });
       }
     );
   }
@@ -58,17 +84,24 @@ export class DoctorDashboardComponent implements OnInit {
   createEPrescription(): void {
     const prescriptionData = {
       patient_id: 'patientId',
-      doctor_id: 'doctorId',
+      doctor_id: this.doctorId, // Use the logged-in doctor's ID
       prescription: 'Prescription details'
     };
 
     this.dataService.createEPrescription(prescriptionData).subscribe(
       (response: any) => {
-        console.log('E-prescription created successfully:', response);
-        // Optionally, update the list of e-prescriptions after creation
+        Swal.fire({
+          icon: 'success',
+          title: 'E-prescription created successfully',
+          text: response.message
+        });
       },
       (error) => {
-        console.error('Error creating e-prescription:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error creating e-prescription',
+          text: error.message
+        });
       }
     );
   }
@@ -78,11 +111,18 @@ export class DoctorDashboardComponent implements OnInit {
 
     this.dataService.updateEPrescription(prescriptionId, updatedPrescription).subscribe(
       (response: any) => {
-        console.log('E-prescription updated successfully:', response);
-        // Optionally, update the list of e-prescriptions after updating
+        Swal.fire({
+          icon: 'success',
+          title: 'E-prescription updated successfully',
+          text: response.message
+        });
       },
       (error) => {
-        console.error('Error updating e-prescription:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error updating e-prescription',
+          text: error.message
+        });
       }
     );
   }
@@ -90,11 +130,18 @@ export class DoctorDashboardComponent implements OnInit {
   deleteEPrescription(prescriptionId: string): void {
     this.dataService.deleteEPrescription(prescriptionId).subscribe(
       (response: any) => {
-        console.log('E-prescription deleted successfully:', response);
-        // Optionally, update the list of e-prescriptions after deletion
+        Swal.fire({
+          icon: 'success',
+          title: 'E-prescription deleted successfully',
+          text: response.message
+        });
       },
       (error) => {
-        console.error('Error deleting e-prescription:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error deleting e-prescription',
+          text: error.message
+        });
       }
     );
   }

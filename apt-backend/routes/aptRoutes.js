@@ -12,7 +12,7 @@ router.post('/register-doctor', aptController.registerDoctorUser);
 router.post('/login-doctor', aptController.loginDoctorUser);
 
 // Appointment routes
-router.post('/appointments', aptController.bookAppointment); // No authentication needed for booking an appointment
+router.post('/appointments', aptController.bookAppointment);
 router.get('/appointments', authenticateToken, aptController.getAllAppointments);
 router.get('/appointments/:id', authenticateToken, aptController.getAppointmentById);
 router.put('/appointments/:id', authenticateToken, aptController.updateAppointment);
@@ -25,5 +25,9 @@ router.get('/patients/doctor/:doctor_id', authenticateToken, aptController.getPa
 router.post('/e-prescriptions', authenticateToken, aptController.createEPrescription);
 router.put('/e-prescriptions/:id', authenticateToken, aptController.updateEPrescription);
 router.delete('/e-prescriptions/:id', authenticateToken, aptController.cancelEPrescription);
+
+// Review routes
+router.get('/reviews', aptController.getAllReviews);
+router.post('/reviews', aptController.createReview);
 
 module.exports = router;

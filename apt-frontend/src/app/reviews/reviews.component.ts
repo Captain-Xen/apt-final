@@ -1,47 +1,70 @@
-// reviews.component.ts
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ReviewService } from '../services/review.service';
 import Swal from 'sweetalert2';
+
+interface Review {
+  id?: number;
+  customer_name: string;
+  occupation: string;
+  review_message: string;
+}
 
 @Component({
   selector: 'app-reviews',
   templateUrl: './reviews.component.html',
   styleUrls: ['./reviews.component.css']
 })
-export class ReviewsComponent {
-  review = {
+export class ReviewsComponent implements OnInit {
+  reviews: Review[] = [];
+  review: Review = {
     customer_name: '',
     occupation: '',
     review_message: ''
   };
 
-  constructor(private reviewService: ReviewService) {}
+  constructor(private reviewService: ReviewService) { }
+
+  ngOnInit(): void {
+    this.getReviews();
+  }
+
+  getReviews(): void {
+    this.reviewService.getReviews().subscribe(
+      data => {
+        this.reviews = data;
+      },
+      error => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Failed to load reviews!'
+        });
+      }
+    );
+  }
 
   onSubmit(): void {
     this.reviewService.createReview(this.review).subscribe(
-      (response: any) => {
+      () => {
         Swal.fire({
           icon: 'success',
-          title: 'Review Submitted',
-          text: 'Your review has been successfully submitted!',
-          showConfirmButton: false,
-          timer: 1500
+          title: 'Review submitted',
+          text: 'Thank you for your feedback!'
         });
-
+        this.getReviews();
         this.review = {
           customer_name: '',
           occupation: '',
           review_message: ''
         };
       },
-      (error: any) => {
+      error => {
         Swal.fire({
           icon: 'error',
-          title: 'Submission Failed',
-          text: error.error.message || 'Unable to submit the review. Please try again.'
+          title: 'Oops...',
+          text: 'Failed to submit review!'
         });
       }
     );
   }
 }
-
