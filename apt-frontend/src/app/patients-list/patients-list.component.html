@@ -1,0 +1,41 @@
+<div class="container mt-5">
+    <h2>Patients List</h2>
+    <div *ngIf="patients.length > 0; else noPatients">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Date of Birth</th>
+            <th>Visit Type</th>
+            <th>Appointment Date</th>
+            <th>Appointment Time</th>
+            <th>Doctor ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let patient of patients">
+            <td>{{ patient.id }}</td>
+            <td>{{ patient.full_name }}</td>
+            <td>{{ patient.phone_number }}</td>
+            <td>{{ patient.email }}</td>
+            <td>{{ patient.age }}</td>
+            <td>{{ patient.gender }}</td>
+            <td>{{ patient.date_of_birth }}</td>
+            <td>{{ patient.visit_type }}</td>
+            <td>{{ patient.apt_date }}</td>
+            <td>{{ patient.apt_time }}</td>
+            <td>{{ patient.doctor_id }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #noPatients>
+      <p>No patients found.</p>
+    </ng-template>
+  </div>
+  

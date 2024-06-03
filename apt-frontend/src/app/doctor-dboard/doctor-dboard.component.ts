@@ -10,18 +10,16 @@ import Swal from 'sweetalert2';
 })
 export class DoctorDashboardComponent implements OnInit {
   doctorId: number | null = null;
-  patients: any[] = [];
-  appointments: any[] = [];
-  selectedAppointment: any = null;
+  doctorProfile: any = null;
+  upcomingAppointments: any[] = [];
 
   constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
     this.doctorId = this.getLoggedInDoctorId();
-    console.log('Doctor ID:', this.doctorId);
     if (this.doctorId) {
-      this.getPatientsByDoctor(this.doctorId);
-      this.getAppointments();
+      this.getDoctorProfile(this.doctorId);
+      this.getUpcomingAppointmentsForDoctor(this.doctorId);
     } else {
       Swal.fire({
         icon: 'error',
@@ -37,110 +35,30 @@ export class DoctorDashboardComponent implements OnInit {
     return doctorId ? parseInt(doctorId, 10) : null;
   }
 
-  getPatientsByDoctor(doctorId: number): void {
-    this.dataService.getPatientsByDoctor(doctorId.toString()).subscribe(
+  getDoctorProfile(doctorId: number): void {
+    this.dataService.getDoctorProfile(doctorId.toString()).subscribe(
       (data: any) => {
-        this.patients = data;
+        this.doctorProfile = data;
       },
       (error) => {
         Swal.fire({
           icon: 'error',
-          title: `Error fetching patients for doctor ${doctorId}`,
+          title: `Error fetching doctor profile for ID ${doctorId}`,
           text: error.message
         });
       }
     );
   }
 
-  getAppointments(): void {
-    this.dataService.getAllAppointments().subscribe(
+  getUpcomingAppointmentsForDoctor(doctorId: number): void {
+    this.dataService.getUpcomingAppointmentsForDoctor(doctorId.toString()).subscribe(
       (data: any) => {
-        this.appointments = data;
+        this.upcomingAppointments = data;
       },
       (error) => {
         Swal.fire({
           icon: 'error',
-          title: 'Error fetching appointments',
-          text: error.message
-        });
-      }
-    );
-  }
-
-  getAppointmentById(appointmentId: string): void {
-    this.dataService.getAppointmentById(appointmentId).subscribe(
-      (data: any) => {
-        this.selectedAppointment = data;
-      },
-      (error) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error fetching appointment',
-          text: error.message
-        });
-      }
-    );
-  }
-
-  createEPrescription(): void {
-    const prescriptionData = {
-      patient_id: 'patientId',
-      doctor_id: this.doctorId,
-      prescription: 'Prescription details'
-    };
-
-    this.dataService.createEPrescription(prescriptionData).subscribe(
-      (response: any) => {
-        Swal.fire({
-          icon: 'success',
-          title: 'E-prescription created successfully',
-          text: response.message
-        });
-      },
-      (error) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error creating e-prescription',
-          text: error.message
-        });
-      }
-    );
-  }
-
-  updateEPrescription(prescriptionId: string): void {
-    const updatedPrescription = 'Updated prescription details';
-
-    this.dataService.updateEPrescription(prescriptionId, updatedPrescription).subscribe(
-      (response: any) => {
-        Swal.fire({
-          icon: 'success',
-          title: 'E-prescription updated successfully',
-          text: response.message
-        });
-      },
-      (error) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error updating e-prescription',
-          text: error.message
-        });
-      }
-    );
-  }
-
-  deleteEPrescription(prescriptionId: string): void {
-    this.dataService.deleteEPrescription(prescriptionId).subscribe(
-      (response: any) => {
-        Swal.fire({
-          icon: 'success',
-          title: 'E-prescription deleted successfully',
-          text: response.message
-        });
-      },
-      (error) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error deleting e-prescription',
+          title: `Error fetching upcoming appointments for doctor ${doctorId}`,
           text: error.message
         });
       }

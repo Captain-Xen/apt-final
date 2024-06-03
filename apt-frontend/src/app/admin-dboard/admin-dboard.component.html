@@ -1,12 +1,23 @@
 <div class="container mt-5">
-  <h2>Welcome, Admin</h2>
-  <button class="btn btn-danger" (click)="logout()">Logout</button>
-    <div class="text-center">
-      <button class="btn btn-primary btn-lg m-2" (click)="navigateTo('patients')">View Patient List</button>
-      <button class="btn btn-primary btn-lg m-2" (click)="navigateTo('doctors')">View Doctor List</button>
-      <button class="btn btn-primary btn-lg m-2" (click)="navigateTo('appointments')">View Booking Appointment List</button>
-      <button class="btn btn-primary btn-lg m-2" (click)="navigateTo('e-prescriptions')">View E-Prescription List</button>
-      <button class="btn btn-primary btn-lg m-2" (click)="navigateTo('admin/register-doctor')">Register a new Doctor</button>
+  <div class="card">
+    <div class="card-header">
+      <h3>Welcome, {{ adminUsername }}</h3>
+    </div>
+    <div class="card-body">
+      <!-- might add more things -->
+      <p>Email: admin&#64;healthcare.com</p>
+      <p>Role: Admin</p>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-danger" (click)="logout()">Logout</button>
     </div>
   </div>
-  
+
+  <div class="text-center mt-3">
+    <button class="btn btn-primary btn-lg m-2" (click)="navigateTo('patients')">View Patient List</button>
+    <button class="btn btn-primary btn-lg m-2" (click)="navigateTo('doctor-list')">View Doctor List</button>
+    <button class="btn btn-primary btn-lg m-2" (click)="navigateTo('appointments')">View Booking Appointment List</button>
+    <button class="btn btn-primary btn-lg m-2" (click)="navigateTo('e-prescriptions')">View E-Prescription List</button>
+    <button class="btn btn-primary btn-lg m-2" (click)="navigateTo('admin/register-doctor')">Register a new Doctor</button>
+  </div>
+</div>

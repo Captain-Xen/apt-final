@@ -264,7 +264,81 @@ exports.loginUser = (req, res) => {
         res.status(200).send({ auth: true, token: token });
     });
 };
+// Main functions 
 
+// Get all doctors
+exports.getAllDoctors = (req, res) => {
+    connection.query('SELECT * FROM doctors', (error, results) => {
+      if (error) {
+        return res.status(500).send('Error retrieving doctors');
+      }
+      res.status(200).json(results);
+    });
+  };
+  
+  // Get doctor by ID
+  exports.getDoctorById = (req, res) => {
+    const { id } = req.params;
+    connection.query('SELECT * FROM doctors WHERE id = ?', [id], (error, results) => {
+      if (error) {
+        return res.status(500).send('Error retrieving doctor');
+      }
+      if (results.length === 0) {
+        return res.status(404).send('Doctor not found');
+      }
+      res.status(200).json(results[0]);
+    });
+  };
+  
+  exports.searchDoctors = (req, res) => {
+    const { query } = req.query;
+
+    if (!query) {
+        return res.status(400).json({ message: 'Query parameter is required.' });
+    }
+
+    const sql = `SELECT * FROM doctors WHERE full_name LIKE ? OR appointment_type LIKE ?`;
+    const searchQuery = `%${query}%`;
+
+    connection.query(sql, [searchQuery, searchQuery], (error, results) => {
+        if (error) {
+            console.error('Database error:', error);
+            return res.status(500).json({ message: 'Error retrieving doctors' });
+        }
+
+        if (results.length === 0) {
+            return res.status(404).json({ message: 'Doctor not found' });
+        }
+
+        res.status(200).json(results);
+    });
+};
+
+
+// Get all patients
+exports.getAllPatients = (req, res) => {
+    connection.query('SELECT * FROM patients', (error, results) => {
+      if (error) {
+        return res.status(500).send('Error retrieving patients');
+      }
+      res.status(200).json(results);
+    });
+  };
+  
+  // Get patient by ID
+  exports.getPatientById = (req, res) => {
+    const { id } = req.params;
+    connection.query('SELECT * FROM patients WHERE id = ?', [id], (error, results) => {
+      if (error) {
+        return res.status(500).send('Error retrieving patient');
+      }
+      if (results.length === 0) {
+        return res.status(404).send('Patient not found');
+      }
+      res.status(200).json(results[0]);
+    });
+  };
+  
 // Book Appointment
 exports.bookAppointment = (req, res) => {
     const { first_name, last_name, phone_number, email, appointment_type, doctor_id, appointment_time, appointment_date } = req.body;
@@ -364,4 +438,21 @@ exports.createReview = (req, res) => {
         }
         res.status(201).json({ id: result.insertId, customer_name, occupation, review_message });
     });
+};
+
+// Get Upcoming Appointments for Doctor
+exports.getUpcomingAppointmentsForDoctor = (req, res) => {
+    const { doctor_id } = req.params;
+    const today = new Date(); // Get today's date
+
+    connection.query(
+        'SELECT * FROM appointments WHERE doctor_id = ? AND appointment_date >= ?',
+        [doctor_id, today],
+        (error, results) => {
+            if (error) {
+                return res.status(500).send('Error retrieving upcoming appointments');
+            }
+            res.status(200).json(results);
+        }
+    );
 };

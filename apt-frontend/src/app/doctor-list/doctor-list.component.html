@@ -1,0 +1,18 @@
+<div class="search-container">
+  <input type="text" [(ngModel)]="searchQuery" placeholder="Search doctors...">
+  <button (click)="searchDoctors(searchQuery)">Search</button>
+
+</div>
+
+<div class="container mt-5">
+    <h2>Doctor List</h2>
+    <div *ngFor="let doctor of doctors">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ doctor.full_name }}</h5>
+          <p class="card-text">Appointment Type: {{ doctor.appointment_type }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

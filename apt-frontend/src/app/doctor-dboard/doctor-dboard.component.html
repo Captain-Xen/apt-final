@@ -1,26 +1,11 @@
-<!-- doctor-dboard.component.html -->
-
 <div class="container">
-  <h1>Welcome, Doctor!</h1>
-  <div *ngIf="patients.length > 0">
-    <h2>Patients List:</h2>
+  <h1>Welcome, {{ doctorProfile?.fullName }}!</h1>
+  <div *ngIf="upcomingAppointments.length > 0">
+    <h2>Upcoming Appointments:</h2>
     <ul>
-      <li *ngFor="let patient of patients">{{ patient.name }}</li>
+      <li *ngFor="let appointment of upcomingAppointments">
+        {{ appointment.dateTime }} with {{ appointment.patientName }}
+      </li>
     </ul>
   </div>
-
-  <div *ngIf="appointments.length > 0">
-    <h2>Appointments List:</h2>
-    <ul>
-      <li *ngFor="let appointment of appointments">{{ appointment.dateTime }}</li>
-    </ul>
-  </div>
-
-  <div *ngIf="selectedAppointment">
-    <h2>Selected Appointment Details:</h2>
-    <p>Date: {{ selectedAppointment.dateTime }}</p>
-    <p>Patient: {{ selectedAppointment.patientName }}</p>
-  </div>
-
-  <button (click)="createEPrescription()">Create E-Prescription</button>
 </div>

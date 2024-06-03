@@ -13,10 +13,16 @@ import { ReviewsComponent } from './reviews/reviews.component';
 import { AdminRegisterDoctorComponent } from './admin-register-doctor/admin-register-doctor.component';
 import { DoctorDashboardComponent } from './doctor-dboard/doctor-dboard.component';
 import { AuthGuard } from './auth.guard';
+import { PatientsListComponent } from './patients-list/patients-list.component'; 
+import { DoctorListComponent } from './doctor-list/doctor-list.component';
+import { AppointmentListComponent } from './appointment-list/appointment-list.component';
 import { AuthService } from './services/auth.service';
 
 const routes: Routes = [
   { path: 'admin/register-doctor', component: AdminRegisterDoctorComponent, canActivate: [AuthGuard] },
+  { path: 'patients', component: PatientsListComponent, canActivate: [AuthGuard] },
+  { path: 'doctor-list', component: DoctorListComponent, canActivate: [AuthGuard] },
+  { path: 'appointments', component: AppointmentListComponent, canActivate: [AuthGuard] },
   { path: 'login/superuser', component: AdminLoginComponent }, 
   { path: '', component: HomepageComponent },
   { path: 'book-apt', component: BookAptComponent },

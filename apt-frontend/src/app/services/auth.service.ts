@@ -43,13 +43,10 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/login-doctor`, { username, password }).pipe(
       map((response: any) => {
         if (response && response.token && response.doctorId) {
-          console.log('Token:', response.token); // Log the token
-          console.log('Doctor ID:', response.doctorId); // Log the doctor ID
-
           this.saveToken(response.token);
-          localStorage.setItem('doctorId', response.doctorId); // Store the doctor ID
+          localStorage.setItem('doctorId', response.doctorId);
           this.authStatus.next(true);
-          this.adminStatus.next(false); // Assuming doctors do not have admin privileges
+          this.adminStatus.next(false); 
           return true;
         }
         return false;
@@ -61,7 +58,7 @@ export class AuthService {
     const token = this.getToken();
     if (token) {
       const decodedToken: any = this.decodeToken(token);
-      return decodedToken.username;  // Assuming 'username' is stored in the token
+      return decodedToken.username; 
     }
     return null;
   }
@@ -76,20 +73,20 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('jwtToken');
-    localStorage.removeItem('doctorId'); // Remove the doctor ID on logout
+    localStorage.removeItem('doctorId');
     this.authStatus.next(false);
     this.adminStatus.next(false);
   }
 
-  private saveToken(token: string): void {
+  saveToken(token: string): void {
     localStorage.setItem('jwtToken', token);
   }
 
-  private getToken(): string | null {
+  getToken(): string | null {
     return localStorage.getItem('jwtToken');
   }
 
-  private decodeToken(token: string): any {
+  decodeToken(token: string): any {
     return JSON.parse(atob(token.split('.')[1]));
   }
 }
