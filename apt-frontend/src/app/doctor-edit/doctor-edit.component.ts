@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from '../services/admin.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-doctor-edit',
@@ -41,11 +42,11 @@ export class DoctorEditComponent implements OnInit {
   onSubmit(): void {
     this.adminService.updateDoctor(this.doctorId, this.doctor).subscribe(
       (response: any) => {
-        alert('Doctor updated successfully!');
+        Swal.fire('Success', 'Doctor updated successfully!', 'success');
         this.router.navigate(['/doctor-list']);
       },
       (error: any) => {
-        alert('Error updating doctor');
+        Swal.fire('Error', 'Error updating doctor', 'error');
       }
     );
   }
