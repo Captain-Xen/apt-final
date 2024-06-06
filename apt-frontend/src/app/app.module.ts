@@ -24,6 +24,7 @@ import { DoctorDashboardComponent } from './doctor-dboard/doctor-dboard.componen
 import { PatientsListComponent } from './patients-list/patients-list.component';
 import { DoctorListComponent } from './doctor-list/doctor-list.component';
 import { AppointmentListComponent } from './appointment-list/appointment-list.component';
+import { DoctorEditComponent } from './doctor-edit/doctor-edit.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AppointmentListComponent } from './appointment-list/appointment-list.co
     DoctorDashboardComponent,
     PatientsListComponent,
     DoctorListComponent,
-    AppointmentListComponent
+    AppointmentListComponent,
+    DoctorEditComponent
   ],
   imports: [
     BrowserModule,

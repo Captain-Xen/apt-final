@@ -8,8 +8,13 @@ const connection = require('./database/dbConnection');
 
 dotenv.config();
 
+const corsOptions = {
+    origin: 'http://localhost:4200', 
+    optionsSuccessStatus: 200, 
+  };
+
 // Middleware for parsing request bodies
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

@@ -291,6 +291,7 @@ exports.getAllDoctors = (req, res) => {
   };
   
   exports.searchDoctors = (req, res) => {
+    console.log('Request query:', req.query);
     const { query } = req.query;
 
     if (!query) {

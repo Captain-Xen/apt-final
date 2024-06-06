@@ -12,7 +12,7 @@ router.post('/register-doctor', aptController.registerDoctorUser);
 router.post('/login-doctor', aptController.loginDoctorUser);
 router.get('/doctors', aptController.getAllDoctors); // Route to get all doctors
 router.get('/doctors/:id',  aptController.getDoctorById); // Route to get a specific doctor by ID
-router.post('/doctors/search=${query}',  aptController.searchDoctors);
+router.post('/doctors/search',  aptController.searchDoctors);
 
 // Appointment routes
 router.post('/appointments', aptController.bookAppointment);

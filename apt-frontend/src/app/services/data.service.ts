@@ -12,12 +12,19 @@ export class DataService {
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   searchDoctors(query: string): Observable<any> {
-    const token = this.authService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    const body = { query }; // Search query in request body
+  const token = this.authService.getToken();
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  const params = new HttpParams().set('query', query);
+
+  return this.http.get(`${this.apiUrl}/doctors/search`, { headers, params });
+}
+// searchDoctors(query: string): Observable<any> {
+//     const token = this.authService.getToken();
+//     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+//     const body = { query }; // Search query in request body
   
-    return this.http.post(`${this.apiUrl}/doctors/search`, body, { headers });
-  }
+//     return this.http.post(`${this.apiUrl}/doctors/search`, body, { headers });
+//   }
   
   
 
