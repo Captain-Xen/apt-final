@@ -24,7 +24,7 @@ import { AuthService } from './services/auth.service';
 const routes: Routes = [
   { path: 'admin/register-doctor', component: AdminRegisterDoctorComponent, canActivate: [AuthGuard] },
   { path: 'patients', component: PatientsListComponent, canActivate: [AuthGuard] },
-  { path: 'edit-doctor', component: DoctorEditComponent, canActivate: [AuthGuard] },
+  { path: 'edit-doctor/:id', component: DoctorEditComponent, canActivate: [AuthGuard] },
   { path: 'doctor-list', component: DoctorListComponent, canActivate: [AuthGuard] },
   { path: 'appointments', component: AppointmentListComponent, canActivate: [AuthGuard] },
   { path: 'login/superuser', component: AdminLoginComponent }, 

@@ -1,17 +1,16 @@
 <div class="container my-5">
-    <h2 class="text-center">Edit Doctor</h2>
-    <form (ngSubmit)="onSubmit()" class="edit-doctor-form">
-      <div class="form-group">
-        <label for="full_name">Full Name:</label>
-        <input type="text" id="full_name" class="form-control" [(ngModel)]="doctor.full_name" name="full_name" required>
-      </div>
-      <div class="form-group">
-        <label for="appointment_type">Appointment Type:</label>
-        <select id="appointment_type" class="form-control" [(ngModel)]="doctor.appointment_type" name="appointment_type" required>
-          <option *ngFor="let type of appointmentTypes" [value]="type">{{ type }}</option>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
-    </form>
-  </div>
-  
+  <h2 class="text-center">Edit Doctor</h2>
+  <form (ngSubmit)="onSubmit()" class="edit-doctor-form">
+    <div class="form-group">
+      <label for="full_name">Full Name:</label>
+      <input type="text" id="full_name" class="form-control" [(ngModel)]="doctor.full_name" name="full_name" required>
+    </div>
+    <div class="form-group">
+      <label for="appointment_type">Appointment Type:</label>
+      <select id="appointment_type" class="form-control" [(ngModel)]="doctor.appointment_type" name="appointment_type" required>
+        <option *ngFor="let type of appointmentTypes" [value]="type">{{ type }}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+  </form>
+</div>

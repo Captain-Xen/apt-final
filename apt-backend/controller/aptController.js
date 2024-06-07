@@ -314,6 +314,26 @@ exports.getAllDoctors = (req, res) => {
     });
 };
 
+// Update doctor
+exports.updateDoctor = (req, res) => {
+    const { id } = req.params;
+    const { full_name, appointment_type } = req.body;
+
+    connection.query(
+        'UPDATE doctors SET full_name = ?, appointment_type = ? WHERE id = ?',
+        [full_name, appointment_type, id],
+        (error, results) => {
+            if (error) {
+                return res.status(500).json({ message: 'Error: Doctor could not be updated :(' });
+            }
+            if (results.affectedRows === 0) {
+                return res.status(404).json({ message: 'Doctor not found' });
+            }
+            res.status(200).json({ message: 'Doctor updated successfully!' });
+        }
+    );
+};
+
 
 // Get all patients
 exports.getAllPatients = (req, res) => {

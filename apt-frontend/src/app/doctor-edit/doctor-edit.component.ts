@@ -33,8 +33,14 @@ export class DoctorEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.doctorId = this.route.snapshot.params['id'];
-    this.adminService.getDoctorById(this.doctorId).subscribe((data: any) => {
+    this.route.params.subscribe(params => {
+      this.doctorId = params['id'];
+      this.loadDoctor(this.doctorId);
+    });
+  }
+
+  loadDoctor(id: number): void {
+    this.adminService.getDoctorById(id).subscribe((data: any) => {
       this.doctor = data;
     });
   }

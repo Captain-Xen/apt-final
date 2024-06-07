@@ -10,9 +10,10 @@ router.post('/login', aptController.loginUser);
 // Doctor routes
 router.post('/register-doctor', aptController.registerDoctorUser);
 router.post('/login-doctor', aptController.loginDoctorUser);
-router.get('/doctors', aptController.getAllDoctors); // Route to get all doctors
-router.get('/doctors/:id',  aptController.getDoctorById); // Route to get a specific doctor by ID
-router.post('/doctors/search',  aptController.searchDoctors);
+router.get('/doctors', aptController.getAllDoctors); //  get all doctors
+router.get('/doctors/:id', aptController.getDoctorById); //  get a specific doctor by ID
+router.post('/doctors/search', aptController.searchDoctors);
+router.put('/doctors/:id', aptController.updateDoctor); //  update doctor by ID
 
 // Appointment routes
 router.post('/appointments', aptController.bookAppointment);
