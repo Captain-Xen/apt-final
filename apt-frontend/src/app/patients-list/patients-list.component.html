@@ -25,9 +25,9 @@
             <td>{{ patient.email }}</td>
             <td>{{ patient.age }}</td>
             <td>{{ patient.gender }}</td>
-            <td>{{ patient.date_of_birth }}</td>
+            <td>{{ patient.date_of_birth | date: 'MM/dd/yyyy'}}</td>
             <td>{{ patient.visit_type }}</td>
-            <td>{{ patient.apt_date }}</td>
+            <td>{{ patient.apt_date | date: 'MM/dd/yyyy'}}</td>
             <td>{{ patient.apt_time }}</td>
             <td>{{ patient.doctor_id }}</td>
           </tr>

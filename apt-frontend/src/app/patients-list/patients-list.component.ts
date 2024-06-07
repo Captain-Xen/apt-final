@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
+import { Pipe, PipeTransform } from '@angular/core';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -7,6 +8,7 @@ import Swal from 'sweetalert2';
   templateUrl: './patients-list.component.html',
   styleUrls: ['./patients-list.component.css']
 })
+
 export class PatientsListComponent implements OnInit {
   patients: any[] = [];
 
