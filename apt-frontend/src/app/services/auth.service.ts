@@ -1,3 +1,4 @@
+// auth.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -19,6 +20,7 @@ export class AuthService {
     const token = this.getToken();
     if (token) {
       const decodedToken: any = this.decodeToken(token);
+      console.log('Decoded token:', decodedToken);
       this.authStatus.next(true);
       this.adminStatus.next(decodedToken.role === 'admin');
     }
@@ -43,6 +45,7 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/login-doctor`, { username, password }).pipe(
       map((response: any) => {
         if (response && response.token && response.doctorId) {
+          console.log('Login response:', response);
           this.saveToken(response.token);
           localStorage.setItem('doctorId', response.doctorId);
           this.authStatus.next(true);
@@ -87,6 +90,11 @@ export class AuthService {
   }
 
   decodeToken(token: string): any {
-    return JSON.parse(atob(token.split('.')[1]));
+    try {
+      return JSON.parse(atob(token.split('.')[1]));
+    } catch (e) {
+      console.error('Error decoding token:', e);
+      return null;
+    }
   }
 }

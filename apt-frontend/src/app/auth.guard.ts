@@ -1,3 +1,4 @@
+// auth.guard.ts
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { AuthService } from './services/auth.service';
@@ -16,13 +17,14 @@ export class AuthGuard implements CanActivate {
     return this.authService.isLoggedIn().pipe(
       take(1),
       map(isLoggedIn => {
+        console.log('AuthGuard: isLoggedIn:', isLoggedIn);
         if (!isLoggedIn) {
-          return this.router.createUrlTree(['/login/superuser']);
+          // Check if the route is for admin or doctor
+          const isDoctorRoute = state.url.includes('/doctor');
+          return this.router.createUrlTree([isDoctorRoute ? '/doctor-login' : '/login/superuser']);
         }
         return true;
       })
     );
   }
 }
-
-

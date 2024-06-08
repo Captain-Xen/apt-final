@@ -11,7 +11,6 @@ import Swal from 'sweetalert2';
 export class DoctorDashboardComponent implements OnInit {
   doctorId: number | null = null;
   doctorProfile: any = null;
-  upcomingAppointments: any[] = [];
 
   constructor(private dataService: DataService, private router: Router) {}
 
@@ -19,7 +18,6 @@ export class DoctorDashboardComponent implements OnInit {
     this.doctorId = this.getLoggedInDoctorId();
     if (this.doctorId) {
       this.getDoctorProfile(this.doctorId);
-      this.getUpcomingAppointmentsForDoctor(this.doctorId);
     } else {
       Swal.fire({
         icon: 'error',
@@ -44,21 +42,6 @@ export class DoctorDashboardComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: `Error fetching doctor profile for ID ${doctorId}`,
-          text: error.message
-        });
-      }
-    );
-  }
-
-  getUpcomingAppointmentsForDoctor(doctorId: number): void {
-    this.dataService.getUpcomingAppointmentsForDoctor(doctorId.toString()).subscribe(
-      (data: any) => {
-        this.upcomingAppointments = data;
-      },
-      (error) => {
-        Swal.fire({
-          icon: 'error',
-          title: `Error fetching upcoming appointments for doctor ${doctorId}`,
           text: error.message
         });
       }

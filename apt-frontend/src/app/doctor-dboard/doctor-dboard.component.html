@@ -1,11 +1,12 @@
 <div class="container">
-  <h1>Welcome, {{ doctorProfile?.fullName }}!</h1>
-  <div *ngIf="upcomingAppointments.length > 0">
-    <h2>Upcoming Appointments:</h2>
-    <ul>
-      <li *ngFor="let appointment of upcomingAppointments">
-        {{ appointment.dateTime }} with {{ appointment.patientName }}
-      </li>
-    </ul>
+  <div *ngIf="doctorProfile">
+    <h1>Welcome, {{ doctorProfile?.fullName }}!</h1>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ doctorProfile?.fullName }}</h5>
+        <p class="card-text">Specialization: {{ doctorProfile?.specialization }}</p>
+        <!-- Add more details as needed -->
+      </div>
+    </div>
   </div>
 </div>
