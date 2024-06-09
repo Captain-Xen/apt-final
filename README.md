@@ -52,3 +52,6 @@
 
 - 📚️ June 8, 2024
     - Dependency upgrade due to severe vulnerability warnings
+
+- 📚️ June 9, 2024
+    - Added MySQL queries (apt_final.sql)
