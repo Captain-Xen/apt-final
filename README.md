@@ -12,7 +12,7 @@
     - Implemented 404 page, reviews list, services offered
     
 - 📚️ May 24, 2024
-    - Implemented about
+    - Implemented about page
     - logo img, router link, login and other pages work
     - fixed bugs, added more functionality to booking appointment page
 
