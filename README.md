@@ -52,5 +52,3 @@
 
 - 📚️ June 8, 2024
     - Dependency upgrade due to severe vulnerability warnings
-
-
