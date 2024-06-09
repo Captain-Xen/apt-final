@@ -5,8 +5,7 @@
     - Created backend API using NodeJS, Express, and MySQL
     - Created frontend using Angular 15.2.11
     - Implemented user authentication using JSON Web Tokens (JWT)
-    - Implemented doctor user registration, admin login, and logout functionality  
-    - Implemented user registration, login, and logout functionality
+    - Implemented doctor user registration, admin login, and logout functionality 
 
 - 📚️ May 23, 2024
     - Implemented contact, booking appointment page, and appointment service
