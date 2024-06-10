@@ -9,14 +9,14 @@ import Swal from 'sweetalert2';
   styleUrls: ['./admin-dboard.component.css']
 })
 export class AdminDboardComponent implements OnInit {
-  adminUsername: string = 'Admin'; // This should be dynamically set after login
+  adminUsername: string = 'Admin'; 
 
   constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
-    // Fetch and set the admin username here, provide a default if null
+    
     const username = this.authService.getAdminUsername();
-    this.adminUsername = username ? username : 'Default Admin'; // Provide a default username if null
+    this.adminUsername = username ? username : 'Default Admin'; 
   }
 
   navigateTo(path: string): void {

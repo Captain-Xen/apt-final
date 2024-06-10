@@ -12,7 +12,7 @@ interface Doctor {
   id: number;
   full_name: string;
   appointment_type: string;
-  // ... other properties
+  
 }
 
 @Component({
@@ -41,7 +41,7 @@ export class DoctorListComponent implements OnInit {
     this.dataService.getAllDoctors().pipe(
       catchError((error) => {
         console.error('Error fetching doctors:', error);
-        return of([]); // Return an empty array if there's an error
+        return of([]); // Return empty array if there's an error
       })
     ).subscribe((data: any) => {
       this.doctors = data as Doctor[];
@@ -53,7 +53,7 @@ export class DoctorListComponent implements OnInit {
       this.dataService.searchDoctors(query).pipe(
         catchError((error) => {
           console.error('Error searching doctors:', error);
-          return of([]); // Return an empty array if there's an error
+          return of([]); // Return empty array if there's an error
         })
       ).subscribe((data: any) => {
         this.doctors = data as Doctor[];

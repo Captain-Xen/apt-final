@@ -33,7 +33,7 @@ export class AdminRegisterDoctorComponent {
   constructor(private adminService: AdminService, private router: Router) {}
 
   registerDoctor(): void {
-    console.log('Registering doctor with data:', this.doctor); // Log the payload data
+    console.log('Registering doctor with data:', this.doctor); 
     this.adminService.registerDoctor(this.doctor).subscribe(
       response => {
         Swal.fire({

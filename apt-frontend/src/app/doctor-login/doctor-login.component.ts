@@ -18,10 +18,10 @@ export class DoctorLoginComponent {
   onSubmit(): void {
     this.authService.loginDoctorUser(this.username, this.password).subscribe(
       (response: any) => {
-        console.log('Login response:', response); // Debugging line to log the response
+        console.log('Login response:', response); // log the response
 
         if (response && response.token && response.doctorId) {
-          // Save token and doctor ID in localStorage
+          // Save token and doctor ID in localStorage?
           localStorage.setItem('jwtToken', response.token);
           localStorage.setItem('doctorId', response.doctorId);
           console.log('Token and doctorId set in localStorage');
@@ -40,7 +40,7 @@ export class DoctorLoginComponent {
             this.router.navigate(['/doctor-dboard']);
           }, 1500);
         } else {
-          // Handle missing token or doctorId in response
+        
           console.error('Missing token or doctorId in response', response);
           Swal.fire({
             icon: 'error',
