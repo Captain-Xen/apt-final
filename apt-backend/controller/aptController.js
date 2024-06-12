@@ -1,3 +1,9 @@
+/*
+ * Author: Khalil Palmer
+ * File Name: aptController.js
+ * Description: This contains controller functions related to authentication, authorization(bcryptjs), JWT token generation with jsonwebtoken, database connections, database functions and nodemailer config for sending emails.
+ */
+
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const connection = require('../database/dbConnection');

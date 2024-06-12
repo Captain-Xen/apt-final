@@ -1,3 +1,9 @@
+/*
+ * Author: Khalil Palmer
+ * File Name: dbConnection.js
+ * Description: This file allows you to establish a connection to the MySQL database using the mysql2 library and dotenv for environment variables.
+ */
+
 const mysql = require('mysql2');
 const dotenv = require('dotenv');
 

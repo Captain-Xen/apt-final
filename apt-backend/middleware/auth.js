@@ -1,3 +1,9 @@
+/*
+ * Author: Khalil Palmer
+ * File Name: auth.js
+ * Description: This contains middleware for authenticating JWT tokens
+ */
+
 const { verifyToken } = require('../utils/jwt');
 require('dotenv').config();
 
