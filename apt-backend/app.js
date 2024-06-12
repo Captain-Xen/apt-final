@@ -1,3 +1,9 @@
+/*
+ * Author: K. Palmer
+ * File Name: app.js
+ * Description: This file configures and starts the Express server for the application. It includes middleware for handling CORS, parsing request bodies with body-parser, and routing API requests with the aptRoutes module. It also establishes a connection to the MySQL database and checks for the existence of a default admin user upon server startup.
+ */
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');

@@ -1,3 +1,9 @@
+/*
+ * Author: Khalil Palmer
+ * File Name: aptRoutes.js
+ * Description: This file contains all the necessary API routes for the application, including routes for doctor registration and admin login, doctor login, appointment booking and management, patient management, reviews etc.
+ */
+
 const express = require('express');
 const router = express.Router();
 const aptController = require('../controller/aptController');
