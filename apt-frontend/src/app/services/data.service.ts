@@ -19,6 +19,18 @@ export class DataService {
     return this.http.post(`${this.apiUrl}/patients`, patientData);
   }
 
+  updatePatient(patientId: number, patientData: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/patients/${patientId}`, patientData);
+  }
+
+  deletePatient(patientId: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/patients/${patientId}`);
+  }
+
+  getPatientById(patientId: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/patients/${patientId}`);
+  }
+
   getAllDoctors() {
     return this.http.get(`${this.apiUrl}/doctors`);
   }

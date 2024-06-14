@@ -1,1 +1,47 @@
-<p>patient-edit works!</p>
+<div class="container">
+    <h1>Edit Patient</h1>
+    <form [formGroup]="patientForm" (ngSubmit)="updatePatient()">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input id="full_name" class="form-control" formControlName="full_name">
+      </div>
+      <div class="form-group">
+        <label for="phone_number">Phone Number</label>
+        <input id="phone_number" class="form-control" formControlName="phone_number">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" class="form-control" formControlName="email">
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input id="age" class="form-control" formControlName="age">
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <input id="gender" class="form-control" formControlName="gender">
+      </div>
+      <div class="form-group">
+        <label for="date_of_birth">Date of Birth</label>
+        <input id="date_of_birth" class="form-control" formControlName="date_of_birth" type="date">
+      </div>
+      <div class="form-group">
+        <label for="visitType">Visit Type</label>
+        <input id="visit_type" class="form-control" formControlName="visit_type">
+      </div>
+      <div class="form-group">
+        <label for="apt_date">Appointment Date</label>
+        <input id="apt_date" class="form-control" formControlName="apt_date" type="date">
+      </div>
+      <div class="form-group">
+        <label for="apt_time">Appointment Time</label>
+        <input id="apt_time" class="form-control" formControlName="apt_time" type="time">
+      </div>
+      <div class="form-group">
+        <label for="doctor_id">Doctor ID</label>
+        <input id="doctor_id" class="form-control" formControlName="doctor_id">
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!patientForm.valid">Update Patient</button>
+    </form>
+  </div>
+  
