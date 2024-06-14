@@ -4,12 +4,32 @@
   </div>
   <div *ngIf="doctorProfile">
     <h1>Welcome, {{ doctorProfile?.full_name }}!</h1>
-    <div class="card">
+    <div class="card mb-3">
       <div class="card-body">
         <h5 class="card-title">{{ doctorProfile?.full_name }}</h5>
         <p class="card-text">Specialization: {{ doctorProfile?.appointment_type }}</p>
-        <!-- Add more details as needed -->
       </div>
     </div>
+  </div>
+
+  <div *ngIf="upcomingAppointments.length > 0">
+    <h2>Upcoming Appointments</h2>
+    <div *ngFor="let appointment of upcomingAppointments" class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Appointment with {{ appointment.patientName }}</h5>
+        <p class="card-text">Date: {{ appointment.date }}</p>
+        <p class="card-text">Time: {{ appointment.time }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="assignedPatients.length > 0">
+    <h2>Assigned Patients</h2>
+    <ul class="list-group mb-3">
+      <li *ngFor="let patient of assignedPatients" class="list-group-item d-flex justify-content-between align-items-center">
+        {{ patient.fullName }}
+        <button class="btn btn-primary" (click)="createEPrescription(patient.id)">Create E-Prescription</button>
+      </li>
+    </ul>
   </div>
 </div>

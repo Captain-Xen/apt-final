@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../services/auth.service'; 
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,13 +12,21 @@ import Swal from 'sweetalert2';
 export class DoctorDashboardComponent implements OnInit {
   doctorId: number | null = null;
   doctorProfile: any = null;
+  upcomingAppointments: any[] = [];
+  assignedPatients: any[] = [];
 
-  constructor(private dataService: DataService, private authService: AuthService, private router: Router) {}
+  constructor(
+    private dataService: DataService,
+    private authService: AuthService, 
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.doctorId = this.getLoggedInDoctorId();
     if (this.doctorId) {
       this.getDoctorProfile(this.doctorId);
+      this.getUpcomingAppointments(this.doctorId);
+      this.getAssignedPatients(this.doctorId);
     } else {
       Swal.fire({
         icon: 'error',
@@ -37,7 +45,6 @@ export class DoctorDashboardComponent implements OnInit {
   getDoctorProfile(doctorId: number): void {
     this.dataService.getDoctorProfile(doctorId.toString()).subscribe(
       (data: any) => {
-        console.log('Doctor profile data:', data); // Log the response data
         this.doctorProfile = data;
       },
       (error) => {
@@ -46,15 +53,46 @@ export class DoctorDashboardComponent implements OnInit {
           title: `Error fetching doctor profile for ID ${doctorId}`,
           text: error.message
         });
-        console.error('Error fetching doctor profile:', error);
       }
     );
   }
 
+  getUpcomingAppointments(doctorId: number): void {
+    this.dataService.getUpcomingAppointmentsForDoctor(doctorId.toString()).subscribe(
+      (data: any) => {
+        this.upcomingAppointments = data;
+      },
+      (error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error fetching upcoming appointments',
+          text: error.message
+        });
+      }
+    );
+  }
+
+  getAssignedPatients(doctorId: number): void {
+    this.dataService.getPatientsByDoctor(doctorId.toString()).subscribe(
+      (data: any) => {
+        this.assignedPatients = data;
+      },
+      (error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error fetching assigned patients',
+          text: error.message
+        });
+      }
+    );
+  }
+
+  createEPrescription(patientId: number): void {
+    this.router.navigate(['/create-eprescription', patientId]);
+  }
+
   logout(): void {
     this.authService.logout();
-    Swal.fire('Logged out', 'You have been logged out successfully', 'success').then(() => {
-      this.router.navigate(['/doctor-login']); 
-    });
+    this.router.navigate(['/doctor-login']);
   }
 }
