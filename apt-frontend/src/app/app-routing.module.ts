@@ -17,7 +17,9 @@ import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { AdminRegisterDoctorComponent } from './admin-register-doctor/admin-register-doctor.component';
-import { PatientsListComponent } from './patients-list/patients-list.component'; 
+import { PatientsListComponent } from './patients-list/patients-list.component';
+import { PatientAddComponent } from './patient-add/patient-add.component';
+import { PatientEditComponent } from './patient-edit/patient-edit.component';
 import { AppointmentListComponent } from './appointment-list/appointment-list.component';
 // services
 import { AuthGuard } from './auth.guard';
@@ -33,6 +35,8 @@ const routes: Routes = [
   { path: 'create-eprescription/:patientId', component: CreateEPrescriptionComponent, canActivate: [AuthGuard] },
   { path: 'e-prescriptions', component: EprescriptionListComponent, canActivate: [AuthGuard] },
   { path: 'admin-dboard', component: AdminDboardComponent, canActivate: [AuthGuard] },
+  { path: 'add-patient', component: PatientAddComponent, canActivate: [AuthGuard] },
+  { path: 'edit-patient/:id', component: PatientEditComponent, canActivate: [AuthGuard] },
   { path: 'doctor-login', component: DoctorLoginComponent },
   { path: 'login/superuser', component: AdminLoginComponent }, 
   { path: '', component: HomepageComponent },

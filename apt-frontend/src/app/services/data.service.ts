@@ -15,6 +15,10 @@ export class DataService {
     return this.http.post(`${this.apiUrl}/doctors/search`, body);
   }
 
+  addPatient(patientData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/patients`, patientData);
+  }
+
   getAllDoctors() {
     return this.http.get(`${this.apiUrl}/doctors`);
   }

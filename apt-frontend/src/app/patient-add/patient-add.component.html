@@ -1,0 +1,31 @@
+<div class="container">
+    <h1>Add Patient</h1>
+    <form [formGroup]="patientForm" (ngSubmit)="addPatient()">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input id="fullName" class="form-control" formControlName="fullName">
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input id="age" class="form-control" formControlName="age">
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <input id="gender" class="form-control" formControlName="gender">
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input id="address" class="form-control" formControlName="address">
+      </div>
+      <div class="form-group">
+        <label for="contact">Contact</label>
+        <input id="contact" class="form-control" formControlName="contact">
+      </div>
+      <div class="form-group">
+        <label for="doctorId">Doctor ID</label>
+        <input id="doctorId" class="form-control" formControlName="doctorId">
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!patientForm.valid">Add Patient</button>
+    </form>
+  </div>
+  

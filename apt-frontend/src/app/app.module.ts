@@ -29,6 +29,8 @@ import { AppointmentListComponent } from './appointment-list/appointment-list.co
 import { DoctorEditComponent } from './doctor-edit/doctor-edit.component';
 import { CreateEPrescriptionComponent } from './create-eprescription/create-eprescription.component';
 import { EprescriptionListComponent } from './eprescription-list/eprescription-list.component';
+import { PatientAddComponent } from './patient-add/patient-add.component';
+import { PatientEditComponent } from './patient-edit/patient-edit.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { EprescriptionListComponent } from './eprescription-list/eprescription-l
     AppointmentListComponent,
     DoctorEditComponent,
     CreateEPrescriptionComponent,
-    EprescriptionListComponent
+    EprescriptionListComponent,
+    PatientAddComponent,
+    PatientEditComponent
   ],
   imports: [
     BrowserModule,
