@@ -15,21 +15,21 @@ router.post('/login', aptController.loginUser);
 
 // Doctor routes
 router.post('/register-doctor', aptController.registerDoctorUser);
-router.post('/login-doctor', aptController.loginDoctorUser);
-router.get('/doctors', aptController.getAllDoctors); //  get all doctors
-router.get('/doctors/:id', aptController.getDoctorById); //  get a specific doctor by ID
-router.post('/doctors/search', aptController.searchDoctors);
-router.put('/doctors/:id', aptController.updateDoctor); //  update doctor by ID
+router.post('/login-doctor', aptController.loginDoctorUser); // No auth middleware here
+router.get('/doctors', authenticateToken, aptController.getAllDoctors); // authenticateToken added
+router.get('/doctors/:id', authenticateToken, aptController.getDoctorById); // authenticateToken added
+router.post('/doctors/search', authenticateToken, aptController.searchDoctors); // authenticateToken added
+router.put('/doctors/:id', authenticateToken, aptController.updateDoctor); // authenticateToken added
 
 // Appointment routes
-router.post('/appointments', aptController.bookAppointment);
-router.get('/appointments', aptController.getAllAppointments);
+router.post('/appointments', authenticateToken, aptController.bookAppointment);
+router.get('/appointments', authenticateToken, aptController.getAllAppointments);
 router.get('/appointments/:id', authenticateToken, aptController.getAppointmentById);
 router.put('/appointments/:id', authenticateToken, aptController.updateAppointment);
 router.delete('/appointments/:id', authenticateToken, aptController.deleteAppointment);
 
 // Patient routes
-router.get('/patients', aptController.getAllPatients); 
+router.get('/patients', authenticateToken, aptController.getAllPatients); 
 router.get('/patients/:id', authenticateToken, aptController.getPatientById); 
 
 // Patient routes for doctors

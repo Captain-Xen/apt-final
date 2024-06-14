@@ -136,28 +136,28 @@ exports.registerDoctorUser = (req, res) => {
 
 // Login Doctor User
 exports.loginDoctorUser = (req, res) => {
-  const { username, password } = req.body;
-
-  connection.query('SELECT * FROM doctors_users WHERE username = ?', [username], (error, results) => {
-      if (error) {
-          return res.status(500).send('Error on the server');
-      }
-      if (results.length === 0) {
-          return res.status(404).send('No doctor user found');
-      }
-
-      const user = results[0];
-      const passwordIsValid = bcrypt.compareSync(password, user.password);
-
-      if (!passwordIsValid) {
-          return res.status(401).send({ auth: false, token: null });
-      }
-
-      const token = jwt.sign({ id: user.id, doctor_id: user.doctor_id }, process.env.JWT_SECRET, { expiresIn: 86400 }); // 24 hours
-
-      res.status(200).send({ auth: true, token: token });
-  });
-};
+    const { username, password } = req.body;
+  
+    connection.query('SELECT * FROM doctors_users WHERE username = ?', [username], (error, results) => {
+        if (error) {
+            return res.status(500).send('Error on the server');
+        }
+        if (results.length === 0) {
+            return res.status(404).send('No doctor user found');
+        }
+  
+        const user = results[0];
+        const passwordIsValid = bcrypt.compareSync(password, user.password);
+  
+        if (!passwordIsValid) {
+            return res.status(401).send({ auth: false, token: null });
+        }
+  
+        const token = jwt.sign({ id: user.id, doctor_id: user.doctor_id }, process.env.JWT_SECRET, { expiresIn: 86400 }); // 24 hours
+  
+        res.status(200).send({ auth: true, token: token, doctorId: user.doctor_id });
+    });
+  };  
 
 
 // Get Patients by Doctor

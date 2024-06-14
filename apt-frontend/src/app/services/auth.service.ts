@@ -50,9 +50,9 @@ export class AuthService {
           localStorage.setItem('doctorId', response.doctorId);
           this.authStatus.next(true);
           this.adminStatus.next(false); 
-          return true;
+          return response; // returns the full response
         }
-        return false;
+        return null; // returns null
       })
     );
   }

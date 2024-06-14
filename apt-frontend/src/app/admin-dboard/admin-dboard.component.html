@@ -1,23 +1,38 @@
 <div class="container mt-5">
-  <div class="card">
-    <div class="card-header">
-      <h3>Welcome, {{ adminUsername }}</h3>
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white">
+      <h3 class="mb-0">Welcome, {{ adminUsername }}</h3>
     </div>
     <div class="card-body">
-      <!-- might add more things -->
-      <p>Email: admin&#64;healthcare.com</p>
-      <p>Role: Admin</p>
+      <div class="mb-3">
+        <strong>Email:</strong> admin&#64;healthcare.com
+      </div>
+      <div>
+        <strong>Role:</strong> Admin
+      </div>
     </div>
-    <div class="card-footer">
+    <div class="card-footer text-end">
       <button class="btn btn-danger" (click)="logout()">Logout</button>
     </div>
   </div>
 
-  <div class="text-center mt-3">
-    <button class="btn btn-primary btn-lg m-2" (click)="navigateTo('patients')">View Patient List</button>
-    <button class="btn btn-primary btn-lg m-2" (click)="navigateTo('doctor-list')">View Doctor List</button>
-    <button class="btn btn-primary btn-lg m-2" (click)="navigateTo('appointments')">View Booking Appointment List</button>
-    <button class="btn btn-primary btn-lg m-2" (click)="navigateTo('e-prescriptions')">View E-Prescription List</button>
-    <button class="btn btn-primary btn-lg m-2" (click)="navigateTo('admin/register-doctor')">Register a new Doctor</button>
+  <div class="text-center mt-4">
+    <div class="row g-2">
+      <div class="col-md-4">
+        <button class="btn btn-primary btn-lg w-100" (click)="navigateTo('patients')">View Patient List</button>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-primary btn-lg w-100" (click)="navigateTo('doctor-list')">View Doctor List</button>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-primary btn-lg w-100" (click)="navigateTo('appointments')">View Booking Appointment List</button>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-primary btn-lg w-100" (click)="navigateTo('e-prescriptions')">View E-Prescription List</button>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-primary btn-lg w-100" (click)="navigateTo('admin/register-doctor')">Register a New Doctor</button>
+      </div>
+    </div>
   </div>
 </div>

@@ -21,9 +21,9 @@ export class DoctorLoginComponent {
         console.log('Login response:', response); // log the response
 
         if (response && response.token && response.doctorId) {
-          // Save token and doctor ID in localStorage?
+          // Save token and doctor ID in localStorage
           localStorage.setItem('jwtToken', response.token);
-          localStorage.setItem('doctorId', response.doctorId);
+          localStorage.setItem('doctorId', response.doctorId.toString());
           console.log('Token and doctorId set in localStorage');
     
           // Display success alert
@@ -40,7 +40,6 @@ export class DoctorLoginComponent {
             this.router.navigate(['/doctor-dboard']);
           }, 1500);
         } else {
-        
           console.error('Missing token or doctorId in response', response);
           Swal.fire({
             icon: 'error',
