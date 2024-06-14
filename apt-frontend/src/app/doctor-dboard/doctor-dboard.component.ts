@@ -60,7 +60,12 @@ export class DoctorDashboardComponent implements OnInit {
   getUpcomingAppointments(doctorId: number): void {
     this.dataService.getUpcomingAppointmentsForDoctor(doctorId.toString()).subscribe(
       (data: any) => {
-        this.upcomingAppointments = data;
+        console.log('Upcoming appointments:', data);
+        this.upcomingAppointments = data.map((appointment: any) => ({
+          patientName: `${appointment.first_name} ${appointment.last_name}`,
+          date: appointment.appointment_date, 
+          time: appointment.appointment_time 
+        }));
       },
       (error) => {
         Swal.fire({
@@ -75,6 +80,7 @@ export class DoctorDashboardComponent implements OnInit {
   getAssignedPatients(doctorId: number): void {
     this.dataService.getPatientsByDoctor(doctorId.toString()).subscribe(
       (data: any) => {
+        console.log('Assigned patients:', data);
         this.assignedPatients = data;
       },
       (error) => {
@@ -87,12 +93,22 @@ export class DoctorDashboardComponent implements OnInit {
     );
   }
 
-  createEPrescription(patientId: number): void {
-    this.router.navigate(['/create-eprescription', patientId]);
+  createEPrescription(patientId: number | null): void {
+    if (patientId) {
+      this.router.navigate(['/create-eprescription', patientId]);
+    } else {
+      this.router.navigate(['/eprescriptions']);  // Adjust this route as necessary
+    }
+  }
+
+  navigateTo(route: string): void {
+    this.router.navigate([`/${route}`]);
   }
 
   logout(): void {
     this.authService.logout();
-    this.router.navigate(['/doctor-login']);
+    Swal.fire('Logged out', 'You have been logged out successfully', 'success').then(() => {
+      this.router.navigate(['/login/superuser']); 
+    });
   }
 }

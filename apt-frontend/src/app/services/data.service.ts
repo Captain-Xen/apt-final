@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +8,11 @@ import { AuthService } from './auth.service';
 export class DataService {
   private apiUrl = 'http://localhost:3000/api/v1';
 
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(private http: HttpClient) {}
 
   searchDoctors(query: string): Observable<any> {
-    const token = this.authService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     const body = { query }; // Search query in request body
-
-    return this.http.post(`${this.apiUrl}/doctors/search`, body, { headers });
+    return this.http.post(`${this.apiUrl}/doctors/search`, body);
   }
 
   getAllDoctors() {
@@ -51,16 +47,11 @@ export class DataService {
     return this.http.delete(`${this.apiUrl}/eprescriptions/${prescriptionId}`);
   }
 
-  //Authorization header for getDoctorProfile method
   getDoctorProfile(doctorId: string): Observable<any> {
-    const token = this.authService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get(`${this.apiUrl}/doctors/${doctorId}`, { headers });
+    return this.http.get(`${this.apiUrl}/doctors/${doctorId}`);
   }
 
   getUpcomingAppointmentsForDoctor(doctorId: string) {
-    const token = this.authService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get(`${this.apiUrl}/doctors/${doctorId}/upcoming-appointments`, { headers });
+    return this.http.get(`${this.apiUrl}/doctors/${doctorId}/upcoming-appointments`);
   }
 }

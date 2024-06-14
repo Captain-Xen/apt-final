@@ -14,5 +14,4 @@ export class AppointmentService {
    return this.http.post(this.apiUrl, appointmentData, options);
   }
 
-  // Add other appointment-related methods as needed
 }

@@ -9,8 +9,10 @@ import { BookAptComponent } from './book-apt/book-apt.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { DoctorLoginComponent } from './doctor-login/doctor-login.component';
 import { AppointmentService } from './services/appointment.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth.interceptor';
 import { DatePipe } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AuthService } from './services/auth.service';
 import { AdminDboardComponent } from './admin-dboard/admin-dboard.component';
@@ -25,6 +27,8 @@ import { PatientsListComponent } from './patients-list/patients-list.component';
 import { DoctorListComponent } from './doctor-list/doctor-list.component';
 import { AppointmentListComponent } from './appointment-list/appointment-list.component';
 import { DoctorEditComponent } from './doctor-edit/doctor-edit.component';
+import { CreateEPrescriptionComponent } from './create-eprescription/create-eprescription.component';
+import { EprescriptionListComponent } from './eprescription-list/eprescription-list.component';
 
 @NgModule({
   declarations: [
@@ -45,15 +49,26 @@ import { DoctorEditComponent } from './doctor-edit/doctor-edit.component';
     PatientsListComponent,
     DoctorListComponent,
     AppointmentListComponent,
-    DoctorEditComponent
+    DoctorEditComponent,
+    CreateEPrescriptionComponent,
+    EprescriptionListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [AuthService, AppointmentService, DatePipe],
+  providers: [
+    AuthService, 
+    AppointmentService, 
+    DatePipe,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

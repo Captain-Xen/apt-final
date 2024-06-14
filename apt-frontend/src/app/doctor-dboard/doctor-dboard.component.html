@@ -17,7 +17,7 @@
     <div *ngFor="let appointment of upcomingAppointments" class="card mb-3">
       <div class="card-body">
         <h5 class="card-title">Appointment with {{ appointment.patientName }}</h5>
-        <p class="card-text">Date: {{ appointment.date }}</p>
+        <p class="card-text">Date: {{ appointment.date | date: 'MM/dd/yyy' }}</p>
         <p class="card-text">Time: {{ appointment.time }}</p>
       </div>
     </div>
@@ -31,5 +31,16 @@
         <button class="btn btn-primary" (click)="createEPrescription(patient.id)">Create E-Prescription</button>
       </li>
     </ul>
+  </div>
+  
+  <div class="text-center mt-4">
+    <div class="row g-2">
+      <div class="col-md-4">
+        <button class="btn btn-primary btn-lg w-100" (click)="navigateTo('patients')">View Patient List</button>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-primary btn-lg w-100" (click)="navigateTo('create-eprescription/:patientId')">View E-Prescription List</button>
+      </div>
+    </div>
   </div>
 </div>

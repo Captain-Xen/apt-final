@@ -5,10 +5,12 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { BookAptComponent } from './book-apt/book-apt.component';
 import { ContactComponent } from './contact/contact.component';
+import { CreateEPrescriptionComponent } from './create-eprescription/create-eprescription.component';
 import { DoctorLoginComponent } from './doctor-login/doctor-login.component';
 import { DoctorEditComponent } from './doctor-edit/doctor-edit.component';
 import { DoctorListComponent } from './doctor-list/doctor-list.component';
 import { DoctorDashboardComponent } from './doctor-dboard/doctor-dboard.component';
+import { EprescriptionListComponent } from './eprescription-list/eprescription-list.component';
 import { AdminDboardComponent } from './admin-dboard/admin-dboard.component';
 import { ServicesOfferedComponent } from './services-offered/services-offered.component';
 import { AboutComponent } from './about/about.component';
@@ -26,16 +28,18 @@ const routes: Routes = [
   { path: 'patients', component: PatientsListComponent, canActivate: [AuthGuard] },
   { path: 'edit-doctor/:id', component: DoctorEditComponent, canActivate: [AuthGuard] },
   { path: 'doctor-list', component: DoctorListComponent, canActivate: [AuthGuard] },
-  { path: 'doctor-login', component: DoctorLoginComponent },
   { path: 'doctor-dboard', component: DoctorDashboardComponent, canActivate: [AuthGuard] },
   { path: 'appointments', component: AppointmentListComponent, canActivate: [AuthGuard] },
+  { path: 'create-eprescription/:patientId', component: CreateEPrescriptionComponent, canActivate: [AuthGuard] },
+  { path: 'e-prescriptions', component: EprescriptionListComponent, canActivate: [AuthGuard] },
+  { path: 'admin-dboard', component: AdminDboardComponent, canActivate: [AuthGuard] },
+  { path: 'doctor-login', component: DoctorLoginComponent },
   { path: 'login/superuser', component: AdminLoginComponent }, 
   { path: '', component: HomepageComponent },
   { path: 'book-apt', component: BookAptComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'about', component: AboutComponent },
   { path: 'reviews', component: ReviewsComponent },
-  { path: 'admin-dboard', component: AdminDboardComponent, canActivate: [AuthGuard] },
   { path: 'services-offered', component: ServicesOfferedComponent },
 
   // wild card: for nonexistent routes -> 404 Page. 

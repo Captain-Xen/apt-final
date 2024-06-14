@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>Create E-Prescription for Patient {{ patientId }}</h1>
+  <form [formGroup]="prescriptionForm" (ngSubmit)="submitPrescription()">
+    <div class="form-group">
+      <label for="prescription">Prescription</label>
+      <textarea id="prescription" class="form-control" formControlName="prescription"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!prescriptionForm.valid">Submit</button>
+  </form>
+</div>

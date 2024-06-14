@@ -26,6 +26,11 @@ export class AuthService {
     }
   }
 
+  getLoggedInDoctorId(): number | null {
+    const doctorId = localStorage.getItem('doctorId');
+    return doctorId ? parseInt(doctorId, 10) : null;
+  }
+
   loginAdmin(username: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, { username, password }).pipe(
       map((response: any) => {
@@ -50,7 +55,7 @@ export class AuthService {
           localStorage.setItem('doctorId', response.doctorId);
           this.authStatus.next(true);
           this.adminStatus.next(false); 
-          return response; // returns the full response
+          return response; 
         }
         return null; // returns null
       })
