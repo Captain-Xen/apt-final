@@ -364,6 +364,31 @@ exports.getAllPatients = (req, res) => {
       res.status(200).json(results[0]);
     });
   };
+
+// Update Patient
+exports.updatePatient = (req, res) => {
+    const { id } = req.params;
+    const { full_name, phone_number, email, age, gender, date_of_birth, visit_type, apt_date, apt_time, doctor_id } = req.body;
+
+    // Format date fields to 'YYYY-MM-DD'
+    const formattedDateOfBirth = new Date(date_of_birth).toISOString().split('T')[0];
+    const formattedAptDate = new Date(apt_date).toISOString().split('T')[0];
+
+    connection.query(
+        'UPDATE patients SET full_name = ?, phone_number = ?, email = ?, age = ?, gender = ?, date_of_birth = ?, visit_type = ?, apt_date = ?, apt_time = ?, doctor_id = ? WHERE id = ?',
+        [full_name, phone_number, email, age, gender, formattedDateOfBirth, visit_type, formattedAptDate, apt_time, doctor_id, id],
+        (error, results) => {
+            if (error) {
+                console.error('Error updating patient:', error); // Log the error
+                return res.status(500).json({ message: 'Error updating patient', error: error.message });
+            }
+            if (results.affectedRows === 0) {
+                return res.status(404).json({ message: 'Patient not found' });
+            }
+            res.status(200).json({ message: 'Patient updated successfully' });
+        }
+    );
+};
   
 // Book Appointment
 exports.bookAppointment = (req, res) => {

@@ -32,6 +32,7 @@ router.delete('/appointments/:id', authenticateToken, aptController.deleteAppoin
 router.get('/patients', authenticateToken, aptController.getAllPatients); 
 router.get('/patients/:id', authenticateToken, aptController.getPatientById); 
 router.get('/doctors/:id/patients', authenticateToken, aptController.getPatientsByDoctor); 
+router.put('/patients/:id', aptController.updatePatient);
 
 // Patient routes for doctors
 router.get('/patients/doctor/:doctor_id', authenticateToken, aptController.getPatientsByDoctor);

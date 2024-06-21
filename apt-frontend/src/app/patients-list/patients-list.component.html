@@ -1,5 +1,6 @@
 <div class="container mt-5">
   <h2>Patients List</h2>
+  <button *ngIf="isAdmin" class="btn btn-primary mb-3" (click)="addPatient()">Add New Patient</button>
   <div *ngIf="patients.length > 0; else noPatients">
     <table class="table table-striped">
       <thead>
@@ -15,7 +16,7 @@
           <th>Appointment Date</th>
           <th>Appointment Time</th>
           <th>Doctor ID</th>
-          <th>Actions</th> <!-- Add this column for actions -->
+          <th *ngIf="isAdmin">Actions</th> <!-- Add this column for actions -->
         </tr>
       </thead>
       <tbody>
@@ -31,7 +32,7 @@
           <td>{{ patient.apt_date | date: 'MM/dd/yyyy'}}</td>
           <td>{{ patient.apt_time }}</td>
           <td>{{ patient.doctor_id }}</td>
-          <td>
+          <td *ngIf="isAdmin">
             <button class="btn btn-warning btn-sm" (click)="editPatient(patient.id)">Edit</button>
             <button class="btn btn-danger btn-sm" (click)="confirmDelete(patient.id)">Delete</button>
           </td>

@@ -79,6 +79,10 @@ export class AuthService {
     return this.adminStatus.asObservable();
   }
 
+  isAdminBoolean(): boolean {
+    return this.adminStatus.value;
+  }
+
   logout(): void {
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('doctorId');

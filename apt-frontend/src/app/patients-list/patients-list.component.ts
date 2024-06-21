@@ -1,6 +1,8 @@
+// patients-list.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
+import { AuthService } from '../services/auth.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,14 +12,19 @@ import Swal from 'sweetalert2';
 })
 export class PatientsListComponent implements OnInit {
   patients: any[] = [];
+  isAdmin: boolean = false;
 
   constructor(
     private dataService: DataService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
     this.getPatients();
+    this.authService.isAdmin().subscribe((isAdmin) => {
+      this.isAdmin = isAdmin;
+    });
   }
 
   getPatients(): void {
@@ -33,6 +40,10 @@ export class PatientsListComponent implements OnInit {
         });
       }
     );
+  }
+
+  addPatient(): void {
+    this.router.navigate(['/add-patient']);
   }
 
   editPatient(patientId: number): void {
