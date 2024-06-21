@@ -1,1 +1,28 @@
-<p>eprescription-list works!</p>
+<div class="container mt-5">
+    <h2>E-Prescriptions List</h2>
+    <div *ngIf="eprescriptions.length > 0; else noEprescriptions">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Patient ID</th>
+            <th>Doctor ID</th>
+            <th>Prescription</th>
+            <th>Date Prescribed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let eprescription of eprescriptions">
+            <td>{{ eprescription.id }}</td>
+            <td>{{ eprescription.patient_id }}</td>
+            <td>{{ eprescription.doctor_id }}</td>
+            <td>{{ eprescription.prescription }}</td>
+            <td>{{ eprescription.date_prescribed | date: 'MM/dd/yyyy' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #noEprescriptions>
+      <p>No e-prescriptions found.</p>
+    </ng-template>
+  </div>

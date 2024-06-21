@@ -51,6 +51,10 @@ export class DataService {
     return this.http.get(`${this.apiUrl}/appointments/${appointmentId}`);
   }
 
+  getAllEprescriptions(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/e-prescriptions`);
+  }
+
   createEPrescription(prescriptionData: any) {
     return this.http.post(`${this.apiUrl}/eprescriptions`, prescriptionData);
   }

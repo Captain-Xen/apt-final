@@ -159,6 +159,16 @@ exports.loginDoctorUser = (req, res) => {
     });
   };  
 
+// Get All E-Prescriptions
+exports.getAllEPrescriptions = (req, res) => {
+    connection.query('SELECT * FROM e_prescriptions', (error, results) => {
+        if (error) {
+            console.error('Error retrieving e-prescriptions:', error);
+            return res.status(500).send('Error retrieving e-prescriptions');
+        }
+        res.status(200).json(results);
+    });
+};
 
 // Get Patients by Doctor
 exports.getPatientsByDoctor = (req, res) => {
