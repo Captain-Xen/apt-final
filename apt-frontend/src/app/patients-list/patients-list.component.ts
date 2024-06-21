@@ -1,6 +1,7 @@
 // patients-list.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { DataService } from '../services/data.service';
 import { AuthService } from '../services/auth.service';
 import Swal from 'sweetalert2';
@@ -17,7 +18,8 @@ export class PatientsListComponent implements OnInit {
   constructor(
     private dataService: DataService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -80,5 +82,9 @@ export class PatientsListComponent implements OnInit {
         });
       }
     );
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }

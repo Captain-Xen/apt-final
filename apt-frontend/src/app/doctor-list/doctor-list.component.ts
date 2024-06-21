@@ -3,6 +3,7 @@ import { DataService } from '../services/data.service';
 import { AuthService } from '../services/auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
+import { Location } from '@angular/common';
 import { AdminService } from '../services/admin.service';
 import { of } from 'rxjs';
 import Swal from 'sweetalert2';
@@ -25,8 +26,9 @@ export class DoctorListComponent implements OnInit {
   
   doctors: Doctor[] = [];
   searchQuery: string = '';
-
+  
   constructor(
+    private location: Location,
     private http: HttpClient,
     private dataService: DataService,
     private authService: AuthService,
@@ -36,12 +38,15 @@ export class DoctorListComponent implements OnInit {
   ngOnInit(): void {
     this.loadDoctors();
   }
+  goBack(): void {
+    this.location.back();
+  }
 
   loadDoctors(): void {
     this.dataService.getAllDoctors().pipe(
       catchError((error) => {
         console.error('Error fetching doctors:', error);
-        return of([]); // Return empty array if there's an error
+        return of([]); 
       })
     ).subscribe((data: any) => {
       this.doctors = data as Doctor[];
@@ -53,7 +58,7 @@ export class DoctorListComponent implements OnInit {
       this.dataService.searchDoctors(query).pipe(
         catchError((error) => {
           console.error('Error searching doctors:', error);
-          return of([]); // Return empty array if there's an error
+          return of([]); 
         })
       ).subscribe((data: any) => {
         this.doctors = data as Doctor[];

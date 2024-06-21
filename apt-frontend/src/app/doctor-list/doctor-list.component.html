@@ -1,7 +1,10 @@
-<div class="search-container">
+<div class="search-container mt-1">
   <input type="text" [(ngModel)]="searchQuery" placeholder="Search doctors...">
   <button (click)="searchDoctors(searchQuery)">Search</button>
 
+</div>
+<div class="back mx-xl-5 text-center">
+  <button class="btn btn-secondary" (click)="goBack()">Back</button>
 </div>
 
 <div class="container mt-5">

@@ -1,6 +1,7 @@
 <div class="container mt-5">
   <h2>Patients List</h2>
   <button *ngIf="isAdmin" class="btn btn-primary mb-3" (click)="addPatient()">Add New Patient</button>
+  <button class="btn btn-secondary" (click)="goBack()">Back</button>
   <div *ngIf="patients.length > 0; else noPatients">
     <table class="table table-striped">
       <thead>
