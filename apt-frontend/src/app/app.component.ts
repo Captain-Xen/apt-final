@@ -21,7 +21,7 @@ export class AppComponent {
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['/login/superuser']); // Redirect to the login page after logout
+    this.router.navigate(['/login/superuser']); 
   }
 
   scrollToTop() {
