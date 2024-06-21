@@ -10,7 +10,14 @@ import { Router } from '@angular/router';
 
 export class AppComponent {
   title = 'Health Care';
+  isLoggedIn: boolean = false;
   constructor(private authService: AuthService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.authService.isLoggedIn().subscribe(status => {
+      this.isLoggedIn = status;
+    });
+  }
 
   logout() {
     this.authService.logout();

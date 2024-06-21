@@ -3,7 +3,7 @@
   <div class="text-center mt-3" style="margin-top: 0 !important;">
     <a href="/"><img src="assets/hplus.png" alt="Health Plus Associates" class="header-logo" width="200"></a>
   </div>
-  <nav class="navbar navbar-expand-lg navbar-light bg-dark-subtle mt-2 " id="mainNav">
+  <nav *ngIf="!isLoggedIn" class="navbar navbar-expand-lg navbar-light bg-dark-subtle mt-2" id="mainNav">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -28,7 +28,6 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/login/superuser" routerLinkActive="active" (click)="scrollToTop()">Login</a>
           </li>
-          
         </ul>
       </div>
     </div>
