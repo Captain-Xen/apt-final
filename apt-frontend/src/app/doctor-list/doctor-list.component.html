@@ -3,11 +3,11 @@
   <button (click)="searchDoctors(searchQuery)">Search</button>
 
 </div>
-<div class="back mx-xl-5 text-center">
-  <button class="btn btn-secondary" (click)="goBack()">Back</button>
-</div>
 
 <div class="container mt-5">
+  <div class="back my-3">
+    <button class="btn btn-secondary" (click)="goBack()">Back</button>
+  </div>
   <h2>Doctor List</h2>
   <div *ngFor="let doctor of doctors">
     <div class="card mb-3">

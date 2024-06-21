@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { Location } from '@angular/common';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -10,7 +11,11 @@ import { DataService } from '../services/data.service';
 export class AppointmentListComponent implements OnInit {
   appointments: any[] = [];
 
-  constructor(private dataService: DataService, private datePipe: DatePipe) { }
+  constructor(
+    private dataService: DataService,
+    private datePipe: DatePipe,
+    private location: Location
+  ) { }
 
   formatDateTime(dateTime: string): string {
     if (!dateTime) return '';
@@ -22,7 +27,9 @@ export class AppointmentListComponent implements OnInit {
     return `${formattedDate} ${formattedTime}`;
   }
   
-
+  goBack(): void {
+    this.location.back();
+  }
   
   ngOnInit(): void {
     this.loadAppointments();
