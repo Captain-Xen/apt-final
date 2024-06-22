@@ -20,11 +20,12 @@ export class AuthService {
     const token = this.getToken();
     if (token) {
       const decodedToken: any = this.decodeToken(token);
-      console.log('Decoded token:', decodedToken);
+      console.log('Decoded token:', decodedToken); 
       this.authStatus.next(true);
       this.adminStatus.next(decodedToken.role === 'admin');
     }
   }
+  
 
   getLoggedInDoctorId(): number | null {
     const doctorId = localStorage.getItem('doctorId');
@@ -32,19 +33,20 @@ export class AuthService {
   }
 
   loginAdmin(username: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, { username, password }).pipe(
-      map((response: any) => {
-        if (response && response.token) {
-          this.saveToken(response.token);
-          const decodedToken: any = this.decodeToken(response.token);
-          this.authStatus.next(true);
-          this.adminStatus.next(decodedToken.role === 'admin');
-          return true;
-        }
-        return false;
-      })
-    );
-  }
+  return this.http.post(`${this.apiUrl}/login`, { username, password }).pipe(
+    map((response: any) => {
+      if (response && response.token) {
+        this.saveToken(response.token);
+        const decodedToken: any = this.decodeToken(response.token);
+        console.log('Admin login decoded token:', decodedToken); // Add this line to debug
+        this.authStatus.next(true);
+        this.adminStatus.next(decodedToken.role === 'admin');
+        return response;
+      }
+      return null;
+    })
+  );
+}
 
   loginDoctorUser(username: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/login-doctor`, { username, password }).pipe(

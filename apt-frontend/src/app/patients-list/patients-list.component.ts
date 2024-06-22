@@ -1,4 +1,3 @@
-// patients-list.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
@@ -24,9 +23,26 @@ export class PatientsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPatients();
-    this.authService.isAdmin().subscribe((isAdmin) => {
-      this.isAdmin = isAdmin;
-    });
+    this.checkAdminStatus();
+  }
+
+  checkAdminStatus(): void {
+    const token = localStorage.getItem('jwtToken');
+    if (token) {
+      const decodedToken: any = this.decodeToken(token);
+      if (decodedToken && decodedToken.role === 'admin') {
+        this.isAdmin = true;
+      }
+    }
+  }
+
+  decodeToken(token: string): any {
+    try {
+      return JSON.parse(atob(token.split('.')[1]));
+    } catch (e) {
+      console.error('Error decoding token:', e);
+      return null;
+    }
   }
 
   getPatients(): void {
